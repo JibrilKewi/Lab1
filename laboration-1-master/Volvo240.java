@@ -9,8 +9,10 @@ public class Volvo240 extends Car {
 
     public double trimFactor;
 
-    Volvo240(int nrDoors, double enginePower, Color color, String modelName, double trimFactor) {
-        super(nrDoors, enginePower, color, modelName);
+    Volvo240(int nrDoors, double enginePower, Color color, String modelName, double trimFactor,
+             double xPos, double yPos, Direction dir, double currentSpeed) {
+
+        super(nrDoors, enginePower, color, modelName, xPos, yPos, dir, currentSpeed);
         this.trimFactor = trimFactor;
     }
 
