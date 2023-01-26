@@ -9,7 +9,7 @@ public class AbstractMovableTest {
 
     @Before
     public void init() {
-        saab95 = new Saab95(1,1, Direction.NORTH, 0);
+        saab95 = new Saab95(1,1, Direction.NORTH);
 
         saab95.startEngine();
     }

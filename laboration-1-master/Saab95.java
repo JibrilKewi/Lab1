@@ -2,18 +2,17 @@ import java.awt.*;
 
 /**
  * Saab95 is used to create and initialize a Saab object.
- * A Saab contains all constructors from the super-class car, see {@link Car}.
- * The Saab object is unique to a car since it's speed factor is different and dependant upon the turbo,
- * and if the turbo is on or off.
- * Saab95 also contains a method for setting the turbo on and off.
+ * A Saab contains all attributes from the super-class car, see {@link Car}.
+ * A Saab object is initialized with position along the x- and y-coordinate, all other characteristics
+ * are set by default.
  */
 public class Saab95 extends Car {
 
     private boolean turboOn;
 
-    Saab95(double xPos, double yPos, Direction dir, double currentSpeed) {
+    Saab95(double xPos, double yPos, Direction dir) {
 
-        super(2, 120, Color.RED, "Saab95", xPos, yPos, dir, currentSpeed);
+        super(2, 120, Color.RED, "Saab95", xPos, yPos, dir, 0);
         this.turboOn = false;
     }
 

@@ -57,7 +57,6 @@ public abstract class Car extends AbstractMovable{
         incrementSpeed(HelperMethods.amountInterval(amount, 0, 1));
     }
 
-
     public void brake(double amount){
         decrementSpeed(HelperMethods.amountInterval(amount, 0, 1));
     }

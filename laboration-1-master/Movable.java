@@ -1,5 +1,6 @@
 /**
- * The movable interface contains the blueprint for all methods necessary for movement of car in the car class.
+ * The movable interface contains the blueprint for all methods necessary for movement. Implemented by AbstractMovable.
+ * @see AbstractMovable
  */
 public interface Movable {
     void move();
