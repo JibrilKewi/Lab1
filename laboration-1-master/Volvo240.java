@@ -8,7 +8,7 @@ import java.awt.*;
  */
 public class Volvo240 extends Car {
 
-    public double trimFactor;
+    private final double trimFactor; // Trim-factor of a volvo object.
 
     Volvo240(double xPos, double yPos, Direction dir) {
 
@@ -16,9 +16,14 @@ public class Volvo240 extends Car {
         this.trimFactor = 1.25;
     }
 
+    /**
+     * Calculate the speed factor for the car based on the engine power and the trim factor.
+     * @return speedFactor, a value that represents how much the speed of the car can change based on
+     * enginePower and trimFactor.
+     */
     @Override
     public double speedFactor(){
-        return enginePower * 0.01 * trimFactor;
+        return getEnginePower() * 0.01 * trimFactor;
     }
 
 }

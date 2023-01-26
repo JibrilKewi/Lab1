@@ -7,10 +7,10 @@ import java.awt.*;
  * decrementing speed.
  */
 public abstract class Car extends AbstractMovable{
-    public int nrDoors; // Number of doors on the car
-    public double enginePower; // Engine power of the car
-    public Color color; // Color of the car
-    public String modelName; // The car model name
+    private final int nrDoors; // The number of doors in the car.
+    private final double enginePower; // The engine power of the car.
+    private Color color; // The color of the car.
+    private final String modelName; // The model name of the car.
 
 
     Car(int nrDoors, double enginePower, Color color, String modelName,
@@ -23,6 +23,10 @@ public abstract class Car extends AbstractMovable{
         this.modelName = modelName;
     }
 
+    /**
+     * speedfactor() is a contract for inheritors to implement a speed-factor method.
+     * @return Returns the speed-factor.
+     */
     public abstract double speedFactor();
 
     public int getNrDoors(){

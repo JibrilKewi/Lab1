@@ -8,7 +8,7 @@ import java.awt.*;
  */
 public class Saab95 extends Car {
 
-    private boolean turboOn;
+    private boolean turboOn; // Turbo-sate of the saab object.
 
     Saab95(double xPos, double yPos, Direction dir) {
 
@@ -16,19 +16,29 @@ public class Saab95 extends Car {
         this.turboOn = false;
     }
 
+    /**
+     * setTurboOn() sets the turbo to "True"
+     */
     public void setTurboOn(){
 	    turboOn = true;
     }
 
+    /**
+     * setTurboOff() sets the turbo to "false"
+     */
     public void setTurboOff(){
 	    turboOn = false;
     }
 
+    /**
+     * speedFactor() calculates the speed-factor based on engine-power and if the turbo is on or off.
+     * @return Returns the speed-factor.
+     */
     @Override
     public double speedFactor(){
         double turbo = 1;
         if(turboOn) turbo = 1.3;
-        return enginePower * 0.01 * turbo;
+        return getEnginePower() * 0.01 * turbo;
     }
 
 }
