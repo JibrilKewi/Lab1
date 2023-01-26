@@ -11,7 +11,6 @@ public class AbstractMovableTest {
     @Before
     public void init() {
         saab95 = new Saab95(1,1, Direction.NORTH);
-
         volvo240 = new Volvo240(1, 1, Direction.NORTH);
 
         volvo240.startEngine();

@@ -2,7 +2,7 @@ import java.awt.*;
 
 /**
  * Volvo240 is used to create and initialize a Volvo object.
- * A Volvo contains all attributes from the super-class car, see {@link Car}.
+ * A Volvo object contains all attributes from the super-class car, see {@link Car}.
  * A Volvo object is initialized with position along the x- and y-coordinate, all other characteristics
  * are set by default.
  */

@@ -7,7 +7,7 @@ public abstract class AbstractMovable implements Movable {
     private double xPos; // The x position of the car.
     private double yPos; // The y position of the car.
     private Direction dir; // The direction of the car.
-    public double currentSpeed; /** The current speed of the object */
+    public double currentSpeed; /** The current speed of the object. */
 
     AbstractMovable(double xPos, double yPos, Direction dir, double currentSpeed){
         this.xPos = xPos;
