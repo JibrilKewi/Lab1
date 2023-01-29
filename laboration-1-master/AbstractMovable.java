@@ -62,6 +62,10 @@ public abstract class AbstractMovable implements Movable {
      */
     public Direction getDir(){return dir;}
 
+    void setDir(Direction nDir){
+        dir = nDir;
+    }
+
     /**
     The move() method updates the object's x and y position based on its current direction and speed.
     */

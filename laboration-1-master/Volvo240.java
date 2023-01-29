@@ -12,7 +12,7 @@ public class Volvo240 extends Car {
 
     Volvo240(double xPos, double yPos, Direction dir) {
 
-        super(2, 100, Color.BLACK, "Volvo240", xPos, yPos, dir, 0);
+        super(2, 100, Color.BLACK, "Volvo240", xPos, yPos, dir, 0, 1243);
         this.trimFactor = 1.25;
     }
 

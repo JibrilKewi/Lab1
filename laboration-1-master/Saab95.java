@@ -12,7 +12,7 @@ public class Saab95 extends Car {
 
     Saab95(double xPos, double yPos, Direction dir) {
 
-        super(2, 120, Color.RED, "Saab95", xPos, yPos, dir, 0);
+        super(2, 120, Color.RED, "Saab95", xPos, yPos, dir, 0, 1495);
         this.turboOn = false;
     }
 
