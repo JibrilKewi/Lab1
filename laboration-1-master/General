@@ -1,0 +1,29 @@
+Comparing abstract classes to interfaces:
+    - Interfaces:
+        - Useful when you want to define common behaviour for unrelated classes
+        - Use when you want to support multiple inheritances
+            - (classes can implement multiple interfaces but only "extend" 1 class)
+    - Abstract classes:
+        - Useful when you want to share common code among multiple related classes
+        - Can have both: method implementations and abstract methods
+        - Can provide default implementations for some methods while requiring subclasses to implement other methods
+        - Use if you need to add a non- static field or non- final field
+
+Summary:
+
+Interfaces are used to define a behaviour example move()
+Abstract classes are used to define a common implementation for that behaviour
+
+Getters vs Setters:
+
+
+
+Junit:
+
+@Before Indicates a method that should be run before each @Test method
+    - Ofter used to initialize an object ex a car in our case
+
+@Test Indicates a method that contains a test
+
+
+@After Indicates a method that should be run after EACH test method
