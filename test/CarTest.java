@@ -12,9 +12,8 @@ public class CarTest {
 
     @Before
     public void init() {
-        saab95 = new Saab95(1,1, Direction.NORTH, 0);
-
-        volvo240 = new Volvo240(1, 1, Direction.NORTH, 0);
+        saab95 = new Saab95(1,1, Direction.NORTH);
+        volvo240 = new Volvo240(1, 1, Direction.NORTH);
 
         volvo240.startEngine();
         saab95.startEngine();

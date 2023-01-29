@@ -5,17 +5,16 @@ import static org.junit.Assert.assertEquals;
 
 public class AbstractMovableTest {
 
-    private Car saab95;
     private Car volvo240;
+    private Car saab95;
 
-    // Write Junit test for Volvo240
     @Before
     public void init() {
-        saab95 = new Saab95(1,1, Direction.NORTH, 0);
-        volvo240 = new Volvo240(1,1,Direction.NORTH,0);
+        saab95 = new Saab95(1,1, Direction.NORTH);
+        volvo240 = new Volvo240(1, 1, Direction.NORTH);
 
-        saab95.startEngine();
         volvo240.startEngine();
+        saab95.startEngine();
     }
 
     @Test
@@ -28,13 +27,17 @@ public class AbstractMovableTest {
         volvo240.move();
         volvo240.setCurrentSpeed(-volvo240.getCurrentSpeed());
         volvo240.move();
-        assertEquals(1, volvo240.getxPos(), 0.0);
+        assertEquals(1, volvo240.getyPos(), 0.0);
+
     }
 
     @Test
     public void testMoveNorth() {
         saab95.move();
         assertEquals(1.1, saab95.getyPos(), 0.0);
+
+        volvo240.move();
+        assertEquals(1.1, volvo240.getyPos(), 0.0);
     }
 
 
@@ -45,6 +48,12 @@ public class AbstractMovableTest {
         saab95.turnLeft();
         saab95.turnLeft();
         assertEquals(Direction.NORTH, saab95.getDir());
+
+        volvo240.turnLeft();
+        volvo240.turnLeft();
+        volvo240.turnLeft();
+        volvo240.turnLeft();
+        assertEquals(Direction.NORTH, volvo240.getDir());
     }
 
     @Test
@@ -54,5 +63,11 @@ public class AbstractMovableTest {
         saab95.turnRight();
         saab95.turnRight();
         assertEquals(Direction.NORTH, saab95.getDir());
+
+        volvo240.turnRight();
+        volvo240.turnRight();
+        volvo240.turnRight();
+        volvo240.turnRight();
+        assertEquals(Direction.NORTH, volvo240.getDir());
     }
 }

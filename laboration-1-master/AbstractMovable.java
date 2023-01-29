@@ -4,19 +4,12 @@
  * Implements the interface {@link Movable}
  */
 public abstract class AbstractMovable implements Movable {
-    private double xPos; // x-coordinate of the car
-    private double yPos; // y-coordinate of the car
-    private Direction dir; // Direction of the car
-    public double currentSpeed; // The current speed of the car
+    private double xPos; // The x position of the car.
+    private double yPos; // The y position of the car.
+    private Direction dir; // The direction of the car.
+    public double currentSpeed; /** The current speed of the object. */
 
-    /**
-     * Constructor to initialize AbstractMovable
-     * @param xPos x-coordinate for the object
-     * @param yPos y-coordinate for the object
-     * @param dir Direction of the object
-     * @param currentSpeed The current speed of the object
-     */
-    public AbstractMovable(double xPos, double yPos, Direction dir, double currentSpeed){
+    AbstractMovable(double xPos, double yPos, Direction dir, double currentSpeed){
         this.xPos = xPos;
         this.yPos = yPos;
         this.dir = dir;
@@ -24,57 +17,58 @@ public abstract class AbstractMovable implements Movable {
     }
 
     /**
-     * Returns xPos of the car
-     * @return xPos
+     * getxPos() is a getter methd for x-coordinate.
+     * @return Returns the x-coordinate
      */
     public double getxPos(){ return xPos; }
 
     /**
-     * Sets xPos = x of the car
-     * @param x
+     * setxPos() sets a new x-coordinate.
+     * @param x New x-coordinate.
      */
     public void setxPos(double x){ xPos = x; }
 
-    /**
-     * Returns xPos of the car
-     * @return yPos
+    /** getyPos() is a getter method for the y-coordinate.
+     * @return Returns the y-coordinate.
      */
     public double getyPos(){
         return yPos;
     }
 
     /**
-     * Sets yPos = y of the car
-     * @param y
+     * setyPos() sets a new y-coordinate.
+     * @param y New y-coordinate.
      */
     public void setyPos(double y){
         yPos = y;
     }
 
     /**
-     * Returns the currentspeed of the car
-     * @return currentSpeed
+     * getCurrentSpeed() is a getter method for currentspeed.
+     @return Returns the currentspeed.
      */
     public double getCurrentSpeed(){
         return currentSpeed;
     }
 
     /**
-     * Sets currentspeed based on amount
-     * @param amount
+     * setCurrentspeed() sets a new speed.
+     * @param amount New currentspeed.
      */
     void setCurrentSpeed(double amount){ currentSpeed = amount; }
 
-    /**
-     * Returns direction dir of car
-     * @return dir
+    /** gerDir() is a getter method for direction.
+     @return Returns the direction.
      */
     public Direction getDir(){return dir;}
 
+    void setDir(Direction nDir){
+        dir = nDir;
+    }
+
     /**
-     * The move method moves the object in the direction specified by the dir variable.
-     * The movement is based on the current speed of the object.
-     */
+    The move() method updates the object's x and y position based on its current direction and speed.
+    */
     @Override
     public void move() {
         switch (dir) {
@@ -86,7 +80,7 @@ public abstract class AbstractMovable implements Movable {
     }
 
     /**
-     * The turnLeft method turns the object in the direction specified by the dir variable.
+     The turnLeft() method changes the object's direction to the left.
      */
     @Override
     public void turnLeft() {
@@ -99,7 +93,7 @@ public abstract class AbstractMovable implements Movable {
     }
 
     /**
-     * The turnRight method turns the object in the direction specified by the dir variable.
+     The turnRight() method changes the object's direction to the right.
      */
     @Override
     public void turnRight() {
