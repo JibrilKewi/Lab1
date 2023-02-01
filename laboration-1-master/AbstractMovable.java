@@ -45,7 +45,7 @@ public abstract class AbstractMovable implements Movable {
 
     /**
      * getCurrentSpeed() is a getter method for currentspeed.
-     @return Returns the currentspeed.
+     * @return Returns the currentspeed.
      */
     public double getCurrentSpeed(){
         return currentSpeed;
