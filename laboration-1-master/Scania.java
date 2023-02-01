@@ -12,7 +12,7 @@ public class Scania extends Truck {
     private double trailerAngle;
 
     Scania(double xPos, double yPos, Direction dir){
-        super(2, 300, Color.black, "scania", xPos, yPos, dir, 0);
+        super(2, 300, Color.black, "Scania", xPos, yPos, dir, 0);
 
         this.trailerAngle = 0;
     }
@@ -50,7 +50,7 @@ public class Scania extends Truck {
 
     @Override
     public void incrementSpeed(double amount) {
-        if(getTrailerAngle() > 0)
+        if(getTrailerAngle() == 0)
             setCurrentSpeed(Math.min(getCurrentSpeed() + speedFactor() * amount, getEnginePower()));
     }
 

@@ -39,18 +39,17 @@ public class CarTransporter extends Truck {
             Car car = carLoad.pop();
             car.setxPos(getxPos() + minLoadDist);
             car.setyPos(getyPos() + minLoadDist);
-            currentWeight -= car.getWeight();
         }
     }
 
-    public int carLoadWeight(){
+    public void carLoadWeight(){
         for (Car car : carLoad) {
             currentWeight += car.getWeight();
-        }return currentWeight;
+        }
     }
 
     public boolean isSafeWeight(Car car){
-        return carLoadWeight() + car.getWeight() > maxWeight;
+        return getCurrentWeight() + car.getWeight() > maxWeight;
     }
 
     public boolean isCloseEnough(Car car){
@@ -58,7 +57,7 @@ public class CarTransporter extends Truck {
     }
 
     public boolean notFullTrailer(){
-        return carLoad.size() < maxNrOfCars;
+        return carLoad.size() != maxNrOfCars;
     }
 
     public int getCurrentWeight() {
@@ -82,9 +81,5 @@ public class CarTransporter extends Truck {
     public void move(){
         super.move();
         updatePos();
-    }
-
-    public Deque<Car> getCarLoad() {
-        return carLoad;
     }
 }
