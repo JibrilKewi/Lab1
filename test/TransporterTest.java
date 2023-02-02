@@ -1,14 +1,12 @@
 import org.junit.Before;
 import org.junit.Test;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
 
+import static org.junit.Assert.*;
 
 public class TransporterTest {
     private Car Volvo240;
     private CarTransporter transporter;
-
 
     @Before
     public void init(){
@@ -19,18 +17,33 @@ public class TransporterTest {
 
     @Test
     public void testLoadCar(){
+        transporter.setRampDown();
         transporter.loadCar(Volvo240);
-        assertEquals(transporter.getCarLoad(), Volvo240);
+        Car car = transporter.getCarLoad().getFirst();
+        assertEquals(car, Volvo240);
     }
 
 
     @Test
     public void testUnloadCar(){
+        transporter.setRampDown();
         transporter.loadCar(Volvo240);
         Car car = transporter.unLoadCar();
         assertEquals(car, Volvo240);
-
-
+    }
+    @Test
+    public void testSetRampUp(){
+        transporter.setRampDown();
+        transporter.setRampUp();
+        assertFalse(transporter.getIsRampDown());
     }
 
+    @Test
+    public void testIncrementSpeedCarTransporter(){
+        transporter.setRampDown();
+        transporter.incrementSpeed(1);
+        assertEquals(transporter.getCurrentSpeed(), 0, 0);
+
+    }
 }
+

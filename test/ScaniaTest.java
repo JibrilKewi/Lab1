@@ -42,5 +42,11 @@ public class ScaniaTest {
         assertEquals(Scania.getTrailerAngle(), amount, 0.0);
     }
 
+    @Test
+    public void testIncrementSpeedScania(){
+        Scania.raiseTrailer(20);
+        Scania.incrementSpeed(1);
+        assertEquals(Scania.getCurrentSpeed(), 0, 0);
+    }
 
 }

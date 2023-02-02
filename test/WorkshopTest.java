@@ -29,7 +29,7 @@ public class WorkshopTest {
 
     }
 
-    @Test
+    @Test(expected = IllegalArgumentException.class)
     public void testStoreFail(){
         for (int i = 0; i < workshop.getCapacity() + 1; i++) {
             try {
@@ -41,10 +41,5 @@ public class WorkshopTest {
         }
         fail("Expected an IllegalArgumentException to be thrown");
     }
-
-
-
-
-
 
 }

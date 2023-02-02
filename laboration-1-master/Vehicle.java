@@ -1,5 +1,10 @@
 import java.awt.*;
-
+/**
+ * Vehicle collects and handles all common traits of vehicles. It stores the characteristics of a car such as:
+ * number of doors, engine power, color, model name.
+ * It also contains methods for getting and setting these characteristics along with methods for incrementing and
+ * decrementing speed.
+ */
 public abstract class Vehicle extends AbstractMovable {
     private final int nrDoors; // The number of doors in the car.
     private final double enginePower; // The engine power of the car.
