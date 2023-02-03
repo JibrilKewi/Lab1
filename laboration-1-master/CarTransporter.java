@@ -22,7 +22,7 @@ public class CarTransporter extends TrailerTruck {
     CarTransporter(double xPos, double yPos, Direction dir) {
         super(2, 300, Color.black, "CarTransporter", xPos, yPos, dir, 0);
 
-        this.isRampUp = true;
+        this.isRampUp = false;
     }
 
 
@@ -31,16 +31,14 @@ public class CarTransporter extends TrailerTruck {
      */
 
     public void lowerTrailer(){
-        if (isTrailerMovable())
-            isRampUp = true;
+            isRampUp = false;
     }
     /**
      * setRampDown() sets isRampDown to false.
      */
 
     public void raiseTrailer(){
-        if (isTrailerMovable())
-            isRampUp = false;
+            isRampUp = true;
     }
 
     /**
@@ -136,16 +134,6 @@ public class CarTransporter extends TrailerTruck {
         return isRampUp;
     }
 
-    /**
-     * incrementSpeed() checks whether the ramp is up or down and if the ramp is up it will increment the speed
-     * of the car-transporter by a given amount that won't exceed the truck engine power.
-     * @param amount The amount which the speed will increment.
-     */
-    @Override
-    public void incrementSpeed(double amount) {
-        if(isRampUp)
-            setCurrentSpeed(Math.min(getCurrentSpeed() + speedFactor() * amount, getEnginePower()));
-    }
 
     /**
      * move() will move the car-transporter in the current direction it is facing based on its current speed and will

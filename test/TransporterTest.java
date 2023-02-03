@@ -13,8 +13,15 @@ public class TransporterTest {
     @Before
     public void init(){
         Volvo240 = new Volvo240(1,1,Direction.NORTH);
-        transporter = new CarTransporter(1,5,Direction.NORTH);
+        transporter = new CarTransporter(5,5,Direction.NORTH);
         Volvo240.startEngine();
+    }
+
+    @Test
+    public void testIncrementSpeedTransporter(){
+        transporter.lowerTrailer();
+        transporter.incrementSpeed(1);
+        assertEquals(transporter.getCurrentSpeed(), 0 , 0.0);
     }
 
     @Test
@@ -38,13 +45,6 @@ public class TransporterTest {
         transporter.lowerTrailer();
         transporter.raiseTrailer();
         assertTrue(transporter.getIsRampUp());
-    }
-
-    @Test
-    public void testIncrementSpeedCarTransporter(){
-        transporter.lowerTrailer();
-        transporter.incrementSpeed(1);
-        assertEquals(transporter.getCurrentSpeed(), 0, 0);
     }
 
     @Test
