@@ -101,7 +101,7 @@ public class CarTransporter extends Truck {
      * isCloseEnough() check whether the car that is getting loaded in close enough to the car-transporter based on
      * the cars current coordinates and the car-transporters coordinates.
      * @param car the car that wants to get loaded
-     * @return True if it does not exceed the maximum weight otherwise false.
+     * @return True if it is close enough to the transporter
      */
     private boolean isCloseEnough(Car car){
        return getyPos() - car.getyPos() < minLoadDist && getxPos() - car.getxPos() < minLoadDist;
