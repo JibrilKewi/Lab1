@@ -4,15 +4,15 @@ import java.util.LinkedList;
 
 /**
  * CarTransporter is used to initialize a CarTransporter-object.
- * A CarTransporter object contains all attributes from the super-class Truck, see {@link Truck}.
+ * A CarTransporter object contains all attributes from the super-class Truck, see {@link TrailerTruck}.
  * A CarTransporter object is initialized with position along the x- and y- coordinates.
  * The other characteristics are set by default.
  * A CarTransporter can load and transport Car objects, see {@link Car}.
  */
 
 
-public class CarTransporter extends Truck {
-    private boolean isRampDown;
+public class CarTransporter extends TrailerTruck {
+    private boolean isRampUp;
     private static int maxWeight = 10_000;
     private static int maxNrOfCars = 10;
     private int currentWeight;
@@ -22,30 +22,33 @@ public class CarTransporter extends Truck {
     CarTransporter(double xPos, double yPos, Direction dir) {
         super(2, 300, Color.black, "CarTransporter", xPos, yPos, dir, 0);
 
-        this.isRampDown = false;
+        this.isRampUp = true;
     }
+
 
     /**
      * setRampDown() sets isRampDown to true.
      */
-    public void setRampDown(){
-        if (!isMoving())
-            isRampDown = true;
+
+    public void lowerTrailer(){
+        if (isTrailerMovable())
+            isRampUp = true;
     }
     /**
      * setRampDown() sets isRampDown to false.
      */
-    public void setRampUp(){
-        if (!isMoving())
-            isRampDown = false;
+
+    public void raiseTrailer(){
+        if (isTrailerMovable())
+            isRampUp = false;
     }
 
     /**
      * getRampDown() returns the current state of the ramp.
      * @return The current state of the ramp.
      */
-    public boolean getIsRampDown(){
-        return isRampDown;
+    public boolean getIsRampUp(){
+        return isRampUp;
     }
 
     /**
@@ -55,7 +58,7 @@ public class CarTransporter extends Truck {
      * @param car The car that will be loaded.
      */
     public void loadCar(Car car) {
-        if (isRampDown && isSafeWeight(car) && isCloseEnough(car) && notFullTrailer()) {
+        if (!isRampUp && isSafeWeight(car) && isCloseEnough(car) && notFullTrailer()) {
             carLoad.push(car);
             car.setxPos(getxPos());
             car.setyPos(getyPos());
@@ -68,7 +71,7 @@ public class CarTransporter extends Truck {
      */
     public Car unLoadCar(){
         Car car = carLoad.pop();
-        if (isRampDown) {
+        if (!isRampUp) {
             car.setxPos(getxPos() + minLoadDist);
             car.setyPos(getyPos() + minLoadDist);
             currentWeight -= car.getWeight();
@@ -128,13 +131,19 @@ public class CarTransporter extends Truck {
         }
     }
 
+    @Override
+    public boolean isTrailerMovable() {
+        return isRampUp;
+    }
+
     /**
      * incrementSpeed() checks whether the ramp is up or down and if the ramp is up it will increment the speed
-     * of the car-transporter.
+     * of the car-transporter by a given amount that won't exceed the truck engine power.
+     * @param amount The amount which the speed will increment.
      */
     @Override
     public void incrementSpeed(double amount) {
-        if(!isRampDown)
+        if(isRampUp)
             setCurrentSpeed(Math.min(getCurrentSpeed() + speedFactor() * amount, getEnginePower()));
     }
 

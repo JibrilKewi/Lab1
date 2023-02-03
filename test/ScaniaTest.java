@@ -8,13 +8,10 @@ public class ScaniaTest {
 
     private Scania Scania;
 
-    private double trailerAngle;
-
     @Before
     public void init(){
         Scania = new Scania(1, 1, Direction.NORTH);
     }
-
 
     @Test
     public void testSafeTrailerAngle(){
@@ -24,7 +21,6 @@ public class ScaniaTest {
         assertEquals(20.0, Scania.getTrailerAngle(), 0.0);
 
     }
-
 
     @Test
     public void testLowerTrailer(){

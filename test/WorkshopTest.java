@@ -12,9 +12,6 @@ public class WorkshopTest {
 
     private Workshop<Volvo240> workshop;
 
-    private Deque<Car> carLoad;
-
-
     @Before
     public void init(){
         Volvo240 = new Volvo240(1,1, Direction.NORTH);

@@ -1,13 +1,16 @@
 import java.util.Deque;
 import java.util.LinkedList;
 
+/**
+ * Workshop is used to initialize workshop-object which can store cars.
+ * Use Generic types in order to accept a specific car type ex (Volvo240)
+ * or just cars in general
+ * Ex: Can construct a workshop that only takes Volvo240 and one that only
+ * takes Saab95
+ */
+
 public class Workshop <T extends Car>{
-    /**
-     * Use Generic types in order to accept a specific car type ex (Volvo240)
-     * or just cars in general
-     * Ex: Can construct a workshop that only takes Volvo240 and one that only
-     * takes Saab95
-     */
+
     private int capacity;
     private final Deque<T> carLoad = new LinkedList<>();
 

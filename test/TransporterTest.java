@@ -19,52 +19,57 @@ public class TransporterTest {
 
     @Test
     public void testLoadCar(){
-        transporter.setRampDown();
+        transporter.lowerTrailer();
         transporter.loadCar(Volvo240);
         Car car = transporter.getCarLoad().getFirst();
         assertEquals(car, Volvo240);
     }
 
-
     @Test
     public void testUnloadCar(){
-        transporter.setRampDown();
+        transporter.lowerTrailer();
         transporter.loadCar(Volvo240);
         Car car = transporter.unLoadCar();
         assertEquals(car, Volvo240);
     }
+
     @Test
     public void testSetRampUp(){
-        transporter.setRampDown();
-        transporter.setRampUp();
-        assertFalse(transporter.getIsRampDown());
+        transporter.lowerTrailer();
+        transporter.raiseTrailer();
+        assertTrue(transporter.getIsRampUp());
     }
 
     @Test
     public void testIncrementSpeedCarTransporter(){
-        transporter.setRampDown();
+        transporter.lowerTrailer();
         transporter.incrementSpeed(1);
         assertEquals(transporter.getCurrentSpeed(), 0, 0);
-
     }
 
     @Test
     public void testMoveY(){
-        transporter.getCarLoad().add(Volvo240);
+        transporter.lowerTrailer();
+        transporter.loadCar(Volvo240);
+        transporter.raiseTrailer();
         transporter.move();
         assertEquals(transporter.getyPos(), Volvo240.getyPos(), 0.0);
     }
 
     @Test
     public void testMoveX(){
-        transporter.getCarLoad().add(Volvo240);
+        transporter.lowerTrailer();
+        transporter.loadCar(Volvo240);
+        transporter.raiseTrailer();
         transporter.move();
         assertEquals(transporter.getxPos(), Volvo240.getxPos(), 0.0);
     }
 
     @Test
     public void testMoveDir(){
-        transporter.getCarLoad().add(Volvo240);
+        transporter.lowerTrailer();
+        transporter.loadCar(Volvo240);
+        transporter.raiseTrailer();
         transporter.move();
         assertEquals(transporter.getDir(), Volvo240.getDir());
     }
