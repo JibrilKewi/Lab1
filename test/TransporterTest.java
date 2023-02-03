@@ -2,6 +2,8 @@ import org.junit.Before;
 import org.junit.Test;
 
 
+import java.util.Deque;
+
 import static org.junit.Assert.*;
 
 public class TransporterTest {
@@ -44,6 +46,27 @@ public class TransporterTest {
         transporter.incrementSpeed(1);
         assertEquals(transporter.getCurrentSpeed(), 0, 0);
 
+    }
+
+    @Test
+    public void testMoveY(){
+        transporter.getCarLoad().add(Volvo240);
+        transporter.move();
+        assertEquals(transporter.getyPos(), Volvo240.getyPos(), 0.0);
+    }
+
+    @Test
+    public void testMoveX(){
+        transporter.getCarLoad().add(Volvo240);
+        transporter.move();
+        assertEquals(transporter.getxPos(), Volvo240.getxPos(), 0.0);
+    }
+
+    @Test
+    public void testMoveDir(){
+        transporter.getCarLoad().add(Volvo240);
+        transporter.move();
+        assertEquals(transporter.getDir(), Volvo240.getDir());
     }
 }
 
