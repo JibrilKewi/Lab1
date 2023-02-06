@@ -39,6 +39,18 @@ public class ScaniaTest {
     }
 
     @Test
+    public void testRaiseTrailerMax(){
+        Scania.raiseTrailer();
+        assertEquals(0, Scania.getTrailerAngle(), 0.0);
+    }
+
+    @Test
+    public void testLowerTrailerMin(){
+        Scania.lowerTrailer();
+        assertEquals(70, Scania.getTrailerAngle(), 0.0);
+    }
+
+    @Test
     public void testIncrementSpeedScania(){
         Scania.raiseTrailer(20);
         Scania.incrementSpeed(1);

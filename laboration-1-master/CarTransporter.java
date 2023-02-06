@@ -27,22 +27,23 @@ public class CarTransporter extends TrailerTruck {
 
 
     /**
-     * setRampDown() sets isRampDown to true.
+     * lowerTrailer() sets isRampUp to false.
      */
-
+    @Override
     public void lowerTrailer(){
             isRampUp = false;
     }
-    /**
-     * setRampDown() sets isRampDown to false.
-     */
 
+    /**
+     * raiseTrailer() sets isRampUp to true.
+     */
+    @Override
     public void raiseTrailer(){
             isRampUp = true;
     }
 
     /**
-     * getRampDown() returns the current state of the ramp.
+     * getRampUp() returns the current state of the ramp.
      * @return The current state of the ramp.
      */
     public boolean getIsRampUp(){
@@ -65,15 +66,14 @@ public class CarTransporter extends TrailerTruck {
 
     /**
      * unLoadCar() unloads a car from a car-transporter object and sets its coordinates to appropriate values.
-     * @return The unloaded car.
      */
-    public Car unLoadCar(){
-        Car car = carLoad.pop();
-        if (!isRampUp) {
+    public void unLoadCar(){
+        if (!carLoad.isEmpty() && !isRampUp) {
+            Car car = carLoad.pop();
             car.setxPos(getxPos() + minLoadDist);
             car.setyPos(getyPos() + minLoadDist);
             currentWeight -= car.getWeight();
-        } return car;
+        }
 
     }
 
@@ -120,7 +120,6 @@ public class CarTransporter extends TrailerTruck {
      * updateLoadPos() updates the position of all cars on the car-transporter by setting iterating over all cars
      * in the carload and updating their coordinates and direction to that of the car-transporter.
      */
-
     private void updateLoadPos(){
         for (Car car : carLoad) {
             car.setxPos(getxPos());
@@ -129,6 +128,10 @@ public class CarTransporter extends TrailerTruck {
         }
     }
 
+    /**
+     * isTrailerMovable checks if the trailer is movable by checking whether the ramp is up.
+     * @return true if the ramp is up.
+     */
     @Override
     public boolean isTrailerMovable() {
         return isRampUp;
@@ -144,6 +147,7 @@ public class CarTransporter extends TrailerTruck {
         super.move();
         updateLoadPos();
     }
+
     /**
      * getCarLoad() is a getter method for getting the loaded cars.
      * @return A deque containing all currently loaded cars.

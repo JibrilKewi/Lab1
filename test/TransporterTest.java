@@ -36,8 +36,8 @@ public class TransporterTest {
     public void testUnloadCar(){
         transporter.lowerTrailer();
         transporter.loadCar(Volvo240);
-        Car car = transporter.unLoadCar();
-        assertEquals(car, Volvo240);
+        transporter.unLoadCar();
+        assertTrue(transporter.getCarLoad().isEmpty());
     }
 
     @Test

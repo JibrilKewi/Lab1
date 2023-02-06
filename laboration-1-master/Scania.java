@@ -16,9 +16,30 @@ public class Scania extends TrailerTruck {
 
         this.trailerAngle = 0;
     }
+
+    /**
+     * isTrailerMovable() checks whether the trailer's angle is at its closed position.
+     * @return True if the trailer's angle = 0.
+     */
     @Override
     public boolean isTrailerMovable(){
         return trailerAngle == 0;
+    }
+
+    /**
+     * raiseTrailer() sets the trailer to its closed position.
+     */
+    @Override
+    public void raiseTrailer() {
+        setSafeTrailerAngle(0);
+    }
+
+    /**
+     * lowerTrailer() sets the ramp-angle to it's max positon.
+     */
+    @Override
+    public void lowerTrailer() {
+        setSafeTrailerAngle(MAX_TRAILER_ANGLE);
     }
 
     /**
@@ -31,26 +52,6 @@ public class Scania extends TrailerTruck {
             trailerAngle = HelperMethods.amountInterval(angle, 0, MAX_TRAILER_ANGLE);
         }
 
-
-    /**
-     * Raises trailer by desired amount
-     * @param amount Amount to raise trailer angle by
-     */
-
-    public void raiseTrailer(double amount){
-        setSafeTrailerAngle(trailerAngle + amount);
-    }
-
-    /**
-     * Lowers trailer by desired amount
-     * @param amount Amount to lower trailer angle by
-     */
-
-    public void lowerTrailer(double amount){
-        setSafeTrailerAngle(trailerAngle - amount);
-    }
-
-
     /**
      * getTrailerAngle() is a getter method for the current angle of the trailer.
      * @return The current trailer angle.
@@ -59,4 +60,19 @@ public class Scania extends TrailerTruck {
         return trailerAngle;
     }
 
+    /**
+     * Raises trailer by desired amount
+     * @param amount Amount to raise trailer angle by
+     */
+    public void raiseTrailer(double amount){
+        setSafeTrailerAngle(trailerAngle + amount);
+    }
+
+    /**
+     * Lowers trailer by desired amount
+     * @param amount Amount to lower trailer angle by
+     */
+    public void lowerTrailer(double amount){
+        setSafeTrailerAngle(trailerAngle - amount);
+    }
 }

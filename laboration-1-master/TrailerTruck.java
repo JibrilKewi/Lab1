@@ -1,6 +1,6 @@
 import java.awt.*;
 /**
- * Truck holds the specifics for a car object.
+ * TrailerTruck holds the general characteristics and methods for a TrailerTruck object.
  */
 
 public abstract class TrailerTruck extends Vehicle{
@@ -26,11 +26,34 @@ public abstract class TrailerTruck extends Vehicle{
         return getEnginePower() * 0.01;
     }
 
-
+    /**
+     * incrementSpeed() checks if the trailer is movable and increments the speed if isTrailerMovable returns true.
+     * @param amount the amount to increase speed with.
+     */
     @Override
     public void incrementSpeed(double amount) {
         if(isTrailerMovable())
             setCurrentSpeed(Math.min(getCurrentSpeed() + speedFactor() * amount, getEnginePower()));
     }
+
+    /**
+     * decrementSpeed() checks if the trailer is movable and decrements the speed if isTrailerMovable returns true.
+     * @param amount the amount to decrease speed with.
+     */
+    @Override
+    public void decrementSpeed(double amount){
+        if(isTrailerMovable())
+            setCurrentSpeed(Math.max(getCurrentSpeed() - speedFactor() * amount, 0));
+    }
+
+    /**
+     * raiseTrailer() is a method used to raise a trailer to its top position.
+     */
+    public abstract void raiseTrailer();
+
+    /**
+     * lowerTrailer() is a method used to lower a trailer to its bottom position.
+     */
+    public abstract void lowerTrailer();
 
 }
