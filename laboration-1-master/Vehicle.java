@@ -9,7 +9,7 @@ public abstract class Vehicle extends AbstractMovable {
     private final int nrDoors; // The number of doors in the car.
     private final double enginePower; // The engine power of the car.
     private Color color; // The color of the car.
-    private final String modelName; // The model name of the car.
+    public final String modelName; // The model name of the car.
 
     Vehicle(int nrDoors, double enginePower, Color color, String modelName,
             double xPos, double yPos, Direction dir, double currentSpeed){
@@ -103,6 +103,7 @@ public abstract class Vehicle extends AbstractMovable {
     public void brake(double amount){
         decrementSpeed(HelperMethods.amountInterval(amount, 0, 1));
     }
+
 }
 
 

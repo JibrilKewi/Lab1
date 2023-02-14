@@ -12,7 +12,7 @@ public abstract class TrailerTruck extends Vehicle{
 
     }
     /**
-     * isTrailerMovable() is a method for determening if a trailertruck-object is able to move.
+     * isTrailerMovable() is a method for determining if a trailer truck-object is able to move.
      * @return Returns true if truck is movable otherwise false.
      */
     public abstract boolean isTrailerMovable();

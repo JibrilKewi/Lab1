@@ -4,6 +4,7 @@ import org.junit.Test;
 import java.awt.*;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotEquals;
 
 public class CarTest {
     private final double amount = 0.3;
@@ -21,6 +22,8 @@ public class CarTest {
 
     @Test
     public void testIncrementSpeed() {
+
+
         double expectedSpeedVolvo = Math.min(volvo240.getCurrentSpeed() + volvo240.speedFactor() * amount,
                                              volvo240.getEnginePower());
 
@@ -32,6 +35,7 @@ public class CarTest {
 
         saab95.incrementSpeed(amount);
         assertEquals(expectedSpeedSaab, saab95.getCurrentSpeed(), 0.0);
+
 
     }
 
