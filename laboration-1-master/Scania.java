@@ -12,7 +12,7 @@ public class Scania extends TrailerTruck {
     private double trailerAngle;
 
     Scania(double xPos, double yPos, Direction dir){
-        super(2, 300, Color.black, "Scania", xPos, yPos, dir, 0);
+        super(2, 100, Color.black, "Scania", xPos, yPos, dir, 0);
 
         this.trailerAngle = 0;
     }

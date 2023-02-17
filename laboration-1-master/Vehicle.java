@@ -64,7 +64,7 @@ public abstract class Vehicle extends AbstractMovable {
     /**
      *  Start the engine of the car and sets the current speed to 0.1 miles per hour.
      */
-    public void startEngine(){ setCurrentSpeed(0.1); }
+    public void startEngine(){ incrementSpeed(0.1); }
 
     /**
      * Stop the engine of the car and sets the current speed to 0.0 miles per hour.

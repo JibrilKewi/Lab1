@@ -13,9 +13,7 @@ public class DrawPanel extends JPanel{
     // Just a single image, TODO: Generalize
 
     ArrayList<BufferedImage> images = new ArrayList<>();
-    BufferedImage saabImage;
-    BufferedImage volvoImage;
-    BufferedImage scaniaImage;
+
     // To keep track of a singel cars position
 
 
@@ -42,12 +40,9 @@ public class DrawPanel extends JPanel{
 
             // Rememember to rightclick src New -> Package -> name: pics -> MOVE *.jpg to pics.
             // if you are starting in IntelliJ.
-            volvoImage = ImageIO.read(DrawPanel.class.getResourceAsStream("pics/Volvo240.jpg"));
-            saabImage = ImageIO.read(DrawPanel.class.getResourceAsStream("pics/Saab95.jpg"));
-            scaniaImage = ImageIO.read(DrawPanel.class.getResourceAsStream("pics/Scania.jpg"));
-            images.add(saabImage);
-            images.add(scaniaImage);
-            images.add(volvoImage);
+            images.add(ImageIO.read(DrawPanel.class.getResourceAsStream("pics/Saab95.jpg")));
+            images.add(ImageIO.read(DrawPanel.class.getResourceAsStream("pics/Scania.jpg")));
+            images.add(ImageIO.read(DrawPanel.class.getResourceAsStream("pics/Volvo240.jpg")));
             positions.add(new Point());
             positions.add(new Point());
             positions.add(new Point());
