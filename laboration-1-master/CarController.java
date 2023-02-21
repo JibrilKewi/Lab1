@@ -14,124 +14,85 @@ import java.util.concurrent.CancellationException;
 public class CarController {
     // member fields:
 
-    // The delay (ms) corresponds to 20 updates a sec (hz)
     private final int delay = 50;
-    // The timer is started with a listener (see below) that executes the statements
-    // each step between delays.
     private Timer timer = new Timer(delay, new TimerListener());
-
-    // The frame that represents this instance View of the MVC pattern
-    CarView frame;
-    // A list of cars, modify if needed
-    ArrayList<Vehicle> cars = new ArrayList<>();
+    private static CarModel model;
+    private CarView view;
 
 
+    public void start() {
+        timer.start();
+    }
 
-    //methods:
+    public void stop() {
+        timer.stop();
+    }
 
     public static void main(String[] args) {
-        // Instance of this class
         CarController cc = new CarController();
-
-        cc.cars.add(new Saab95(0,0, Direction.EAST));
-
-        cc.cars.add(new Scania(0,0, Direction.EAST));
-
-        cc.cars.add(new Volvo240(0,0, Direction.EAST));
-
-        // Start a new view and send a reference of self
-        cc.frame = new CarView("CarSim 1.0", cc);
-
-        // Start the timer
+        model = new CarModel();
+        model.CarModelImpl();
+        cc.view = new CarView("CarSim 2.0", cc);
+        cc.view.addCar(new Saab95(0, 0, Direction.EAST));
+        cc.view.addCar(new Scania(0, 0, Direction.EAST));
+        cc.view.addCar(new Volvo240(0, 0, Direction.EAST));
         cc.timer.start();
     }
+
+
 
     /* Each step the TimerListener moves all the cars in the list and tells the
     * view to update its images. Change this method to your needs.
     * */
     private class TimerListener implements ActionListener {
         public void actionPerformed(ActionEvent e) {
-            for (Vehicle vehicle : cars) {
-                if (vehicle.getxPos() > 700 || vehicle.getxPos() < 0){
-                    vehicle.turnLeft();
-                    vehicle.turnLeft();
-                    vehicle.move();
-                    int x = (int) Math.round(vehicle.getxPos());
-                    int y = (int) Math.round(vehicle.getyPos());
-                    int index = cars.indexOf(vehicle);
-                    frame.drawPanel.moveit(x, y, index);
-                    frame.drawPanel.repaint();
-                } else {
-                    vehicle.move();
-                    int x = (int) Math.round(vehicle.getxPos());
-                    int y = (int) Math.round(vehicle.getyPos());
-                    int index = cars.indexOf(vehicle);
-                    frame.drawPanel.moveit(x, y, index);
-                    // repaint() calls the paintComponent method of the panel
-                    frame.drawPanel.repaint();
-
-                }
+            for(Vehicle vehicle : model.getCars()){
+                model.updateCars();
+                int x = (int) Math.round(vehicle.getxPos());
+                int y = (int) Math.round(vehicle.getyPos());
+                int index = model.getCars().indexOf(vehicle);
+                view.updateCarPosition(x, y, index);
             }
         }
     }
 
-    // Calls the gas method for each car once
-    void gas(int amount) {
-        double gas = ((double) amount) / 100;
-        for (Vehicle vehicle : cars) {
-            vehicle.gas(gas);
-        }
+
+    public void addCar(Vehicle car) {
+        model.addCar(car);
+        view.addCar(car);
     }
 
-    // Calls the brake method for each car once
-    void brake(int amount) {
-        double brake = ((double) amount) / 100;
-        for (Vehicle vehicle : cars) {
-            vehicle.brake(brake);
-        }
+
+    public void gas(int amount) {
+        model.gas(amount);
     }
 
-    void stopEngine() {
-        for (Vehicle vehicle : cars) {
-            vehicle.stopEngine();
-        }
+    public void brake(int amount) {
+        model.brake(amount);
     }
 
-    void startEngine() {
-        for (Vehicle vehicle : cars) {
-            vehicle.startEngine();
-        }
+    public void stopEngine() {
+        model.stopEngine();
     }
 
-    // Calls setTurboOn for all saab objects once
-    void turboOn() {
-        for (Vehicle car : cars) {
-            if(car instanceof Saab95 saab95){
-                saab95.setTurboOn();
-            }
-        }
+    public void startEngine() {
+        model.startEngine();
     }
 
-    // Calls setTurboOff for all saab objects once
-    void turboOff() {
-        for (Vehicle car : cars) {
-            if(car instanceof Saab95 saab){
-                saab.setTurboOff();
-            }
-        }
+    public void turboOn() {
+        model.turboOn();
     }
-    void liftBed() {
-        for (Vehicle vehicle : cars) {
-            if(vehicle instanceof Scania scan){
-                scan.raiseTrailer();
-            }
-        }
+
+    public void turboOff() {
+        model.turboOff();
     }
-    void lowerBed() {
-        for (Vehicle vehicle : cars) {
-            if(vehicle instanceof Scania scan){
-                scan.lowerTrailer();
-            }
-        }
+
+    public void liftBed() {
+        model.liftBed();
+    }
+
+    public void lowerBed() {
+        model.lowerBed();
     }
 }
+

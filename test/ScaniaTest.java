@@ -17,7 +17,7 @@ public class ScaniaTest {
     public void testSafeTrailerAngle(){
         double angle = 20.0;
         Scania.setCurrentSpeed(0.0);
-        Scania.setSafeTrailerAngle(angle);
+        Scania.raiseTrailer(angle);
         assertEquals(20.0, Scania.getTrailerAngle(), 0.0);
 
     }

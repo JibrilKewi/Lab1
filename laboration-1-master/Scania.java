@@ -6,15 +6,10 @@ import java.awt.*;
  * A Scania object is initialized with position along the x- and y- coordinates.
  * The other characteristics are set by default.
  */
-public class Scania extends TrailerTruck {
-    private static final double MAX_TRAILER_ANGLE = 70;
-
-    private double trailerAngle;
+public class Scania extends TrailerTruck implements TrailerMethods{
 
     Scania(double xPos, double yPos, Direction dir){
         super(2, 100, Color.black, "Scania", xPos, yPos, dir, 0);
-
-        this.trailerAngle = 0;
     }
 
     /**
@@ -23,7 +18,7 @@ public class Scania extends TrailerTruck {
      */
     @Override
     public boolean isTrailerMovable(){
-        return trailerAngle == 0;
+        return getTrailerAngle() == 0;
     }
 
     /**
@@ -31,7 +26,7 @@ public class Scania extends TrailerTruck {
      */
     @Override
     public void raiseTrailer() {
-        setSafeTrailerAngle(0);
+        trailer.raise();
     }
 
     /**
@@ -39,25 +34,16 @@ public class Scania extends TrailerTruck {
      */
     @Override
     public void lowerTrailer() {
-        setSafeTrailerAngle(MAX_TRAILER_ANGLE);
+        trailer.lower();
     }
 
-    /**
-     * Sets trailer angle depending on if truck is moving
-     * Check so that the truck is not moving
-     * @param angle Desired angle
-     */
-    public void setSafeTrailerAngle(double angle){
-        if(getCurrentSpeed() == 0)
-            trailerAngle = HelperMethods.amountInterval(angle, 0, MAX_TRAILER_ANGLE);
-        }
 
     /**
      * getTrailerAngle() is a getter method for the current angle of the trailer.
      * @return The current trailer angle.
      */
     public double getTrailerAngle(){
-        return trailerAngle;
+        return trailer.getAngle();
     }
 
     /**
@@ -65,7 +51,7 @@ public class Scania extends TrailerTruck {
      * @param amount Amount to raise trailer angle by
      */
     public void raiseTrailer(double amount){
-        setSafeTrailerAngle(trailerAngle + amount);
+        trailer.raise(amount);
     }
 
     /**
@@ -73,6 +59,6 @@ public class Scania extends TrailerTruck {
      * @param amount Amount to lower trailer angle by
      */
     public void lowerTrailer(double amount){
-        setSafeTrailerAngle(trailerAngle - amount);
+        trailer.lower(amount);
     }
 }

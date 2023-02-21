@@ -10,49 +10,34 @@ import javax.swing.*;
 
 public class DrawPanel extends JPanel{
 
-    // Just a single image, TODO: Generalize
-
-    ArrayList<BufferedImage> images = new ArrayList<>();
-
-    // To keep track of a singel cars position
-
-
-    ArrayList<Point> positions = new ArrayList<>();
 
     // TODO: Make this general for all cars
+    private ArrayList<Vehicle> cars = new ArrayList<>();
+    private ArrayList<BufferedImage> images = new ArrayList<>();
+    private ArrayList<Point> positions = new ArrayList<>();
 
-    void moveit(int x, int y, int index){
-        if(index >= 0 && index < images.size()){
-            positions.set(index, new Point(x, y));
-        }
-    }
-
-    // Initializes the panel and reads the images
     public DrawPanel(int x, int y) {
-        this.setDoubleBuffered(true);
-        this.setPreferredSize(new Dimension(x, y));
-        this.setBackground(Color.blue);
-        // Print an error message in case file is not found with a try/catch block
+        setDoubleBuffered(true);
+        setPreferredSize(new Dimension(x, y));
+        setBackground(Color.blue);
+
         try {
-            // You can remove the "pics" part if running outside of IntelliJ and
-            // everything is in the same main folder.
-            // volvoImage = ImageIO.read(new File("Volvo240.jpg"));
-
-            // Rememember to rightclick src New -> Package -> name: pics -> MOVE *.jpg to pics.
-            // if you are starting in IntelliJ.
-            images.add(ImageIO.read(DrawPanel.class.getResourceAsStream("pics/Saab95.jpg")));
-            images.add(ImageIO.read(DrawPanel.class.getResourceAsStream("pics/Scania.jpg")));
-            images.add(ImageIO.read(DrawPanel.class.getResourceAsStream("pics/Volvo240.jpg")));
+            images.add(ImageIO.read(getClass().getResourceAsStream("pics/Saab95.jpg")));
+            images.add(ImageIO.read(getClass().getResourceAsStream("pics/Scania.jpg")));
+            images.add(ImageIO.read(getClass().getResourceAsStream("pics/Volvo240.jpg")));
             positions.add(new Point());
             positions.add(new Point());
             positions.add(new Point());
-
-        } catch (IOException ex)
-        {
+        } catch (IOException ex) {
             ex.printStackTrace();
         }
-
     }
+
+    public void addCar(Vehicle car) {
+        cars.add(car);
+        positions.add(new Point());
+    }
+
 
     // This method is called each time the panel updates/refreshes/repaints itself
     // TODO: Change to suit your needs.
@@ -63,6 +48,13 @@ public class DrawPanel extends JPanel{
             Point p = positions.get(i);
             g.drawImage(images.get(i), p.x, p.y + i*100, null);
         }
+
+
+    }
+
+    public void updateCarPosition(int x, int y, int index) {
+       positions.set(index, new Point(x, y));
+        repaint();
     }
 
 }

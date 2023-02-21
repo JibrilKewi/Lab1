@@ -1,6 +1,3 @@
-import java.util.Deque;
-import java.util.LinkedList;
-
 /**
  * Workshop is used to initialize workshop-object which can store cars.
  * Use Generic types in order to accept a specific car type ex (Volvo240)
@@ -11,40 +8,38 @@ import java.util.LinkedList;
 
 public class Workshop <T extends Car>{
 
-    private int capacity;
-    private final Deque<T> carLoad = new LinkedList<>();
+    // TODO Implementera interface carloadmethods korrekt
+    CarLoad<T> carLoad;
 
-    public Workshop(int capacity){
-        this.capacity = capacity;
+    public Workshop() {
+        this.carLoad = new CarLoad<>();
     }
 
     /**
      * Stores car in workshop if capacity allows
      * @param car The type of care to be stored
      */
-    public void storeCar (T car){
-        if (carLoad.size() < capacity){
-            carLoad.push(car);
+    public void loadCar(T car){
+        if (canLoad()){
+            carLoad.loadCar(car);
         } else {
             throw new IllegalArgumentException("Workshop is full");
         }
     }
 
+
     /**
      * Returns the specified car type that arrived most recently at the shop
-     * @return The car from top of the stack
+     * The car from top of the stack
      */
-    public T getCar(){
-        return carLoad.pop();
+    public void unloadCar(){
+        carLoad.unloadCar();
     }
 
 
-    /**
-     * Returns the capacity of the workshop
-     * @return capacity as an int
-     */
-    public int getCapacity() {
-        return capacity;
+
+    public boolean canLoad(){
+        return carLoad.notFullLoad();
     }
 
 }

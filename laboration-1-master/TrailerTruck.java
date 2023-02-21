@@ -5,12 +5,16 @@ import java.awt.*;
 
 public abstract class TrailerTruck extends Vehicle{
 
+    public Trailer trailer;
+
     TrailerTruck(int nrDoors, double enginePower, Color color, String modelName,
           double xPos, double yPos, Direction dir, double currentSpeed){
 
         super(nrDoors, enginePower, color, modelName, xPos, yPos, dir, currentSpeed);
+        this.trailer = new Trailer();
 
     }
+
     /**
      * isTrailerMovable() is a method for determining if a trailer truck-object is able to move.
      * @return Returns true if truck is movable otherwise false.
@@ -46,14 +50,6 @@ public abstract class TrailerTruck extends Vehicle{
             setCurrentSpeed(Math.max(getCurrentSpeed() - speedFactor() * amount, 0));
     }
 
-    /**
-     * raiseTrailer() is a method used to raise a trailer to its top position.
-     */
-    public abstract void raiseTrailer();
 
-    /**
-     * lowerTrailer() is a method used to lower a trailer to its bottom position.
-     */
-    public abstract void lowerTrailer();
 
 }
