@@ -19,9 +19,9 @@ public class WorkshopTest {
     }
 
     @Test
-    public void testStoreCar(){
-        workshop.storeCar(Volvo240);
-        Volvo240 Workshop = workshop.getCar();
+    public void testStoreVehicle(){
+        workshop.storeVehicle(Volvo240);
+        Volvo240 Workshop = workshop.getVehicle();
         assertEquals(Workshop, Volvo240);
 
     }
@@ -30,7 +30,7 @@ public class WorkshopTest {
     public void testStoreFail(){
         for (int i = 0; i < workshop.getCapacity() + 1; i++) {
             try {
-                workshop.storeCar(Volvo240);
+                workshop.storeVehicle(Volvo240);
             } catch (IllegalArgumentException e) {
                 assertEquals("Workshop is full", e.getMessage());
                 throw e;

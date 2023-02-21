@@ -3,44 +3,15 @@
  * Also contains the necessary methods for changing this information by applying these methods.
  * Implements the interface {@link Movable}
  */
-public abstract class AbstractMovable implements Movable {
-    private double xPos; // The x position of the car.
-    private double yPos; // The y position of the car.
+public abstract class AbstractMovable extends AbstractPositionable implements Movable  {
+
     private Direction dir; // The direction of the car.
     public double currentSpeed; /** The current speed of the object. */
 
     AbstractMovable(double xPos, double yPos, Direction dir, double currentSpeed){
-        this.xPos = xPos;
-        this.yPos = yPos;
+        super(xPos, yPos);
         this.dir = dir;
         this.currentSpeed = currentSpeed;
-    }
-
-    /**
-     * getxPos() is a getter methd for x-coordinate.
-     * @return Returns the x-coordinate
-     */
-    public double getxPos(){ return xPos; }
-
-    /**
-     * setxPos() sets a new x-coordinate.
-     * @param x New x-coordinate.
-     */
-    public void setxPos(double x){ xPos = x; }
-
-    /** getyPos() is a getter method for the y-coordinate.
-     * @return Returns the y-coordinate.
-     */
-    public double getyPos(){
-        return yPos;
-    }
-
-    /**
-     * setyPos() sets a new y-coordinate.
-     * @param y New y-coordinate.
-     */
-    public void setyPos(double y){
-        yPos = y;
     }
 
     /**

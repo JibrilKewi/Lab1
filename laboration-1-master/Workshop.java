@@ -9,10 +9,10 @@ import java.util.LinkedList;
  * takes Saab95
  */
 
-public class Workshop <T extends Car>{
+public class Workshop <T extends Vehicle>{
 
     private int capacity;
-    private final Deque<T> carLoad = new LinkedList<>();
+    private final Deque<T> vehicleLoad = new LinkedList<>();
 
     public Workshop(int capacity){
         this.capacity = capacity;
@@ -20,11 +20,11 @@ public class Workshop <T extends Car>{
 
     /**
      * Stores car in workshop if capacity allows
-     * @param car The type of care to be stored
+     * @param vehicle The type of care to be stored
      */
-    public void storeCar (T car){
-        if (carLoad.size() < capacity){
-            carLoad.push(car);
+    public void storeVehicle (T vehicle){
+        if (vehicleLoad.size() < capacity){
+            vehicleLoad.push(vehicle);
         } else {
             throw new IllegalArgumentException("Workshop is full");
         }
@@ -34,8 +34,8 @@ public class Workshop <T extends Car>{
      * Returns the specified car type that arrived most recently at the shop
      * @return The car from top of the stack
      */
-    public T getCar(){
-        return carLoad.pop();
+    public T getVehicle(){
+        return vehicleLoad.pop();
     }
 
 

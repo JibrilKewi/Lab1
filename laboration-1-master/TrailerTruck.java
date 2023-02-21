@@ -3,7 +3,7 @@ import java.awt.*;
  * TrailerTruck holds the general characteristics and methods for a TrailerTruck object.
  */
 
-public abstract class TrailerTruck extends Vehicle{
+public abstract class TrailerTruck extends MotorizedVehicle{
 
     TrailerTruck(int nrDoors, double enginePower, Color color, String modelName,
           double xPos, double yPos, Direction dir, double currentSpeed){
