@@ -1,9 +1,8 @@
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
-import java.util.Objects;
-import java.util.concurrent.CancellationException;
+
+
 
 /*
 * This class represents the Controller part in the MVC pattern.
@@ -12,33 +11,21 @@ import java.util.concurrent.CancellationException;
  */
 
 public class CarController {
-    // member fields:
-
     private final int delay = 50;
     private Timer timer = new Timer(delay, new TimerListener());
     private static CarModel model;
-    private CarView view;
-
+    private static CarView view;
 
     public void start() {
         timer.start();
     }
 
-    public void stop() {
-        timer.stop();
-    }
-
     public static void main(String[] args) {
         CarController cc = new CarController();
         model = new CarModel();
-        model.CarModelImpl();
-        cc.view = new CarView("CarSim 2.0", cc);
-        cc.view.addCar(new Saab95(0, 0, Direction.EAST));
-        cc.view.addCar(new Scania(0, 0, Direction.EAST));
-        cc.view.addCar(new Volvo240(0, 0, Direction.EAST));
+        view = new CarView("CarSim 2.0", cc);
         cc.timer.start();
     }
-
 
 
     /* Each step the TimerListener moves all the cars in the list and tells the
@@ -56,12 +43,15 @@ public class CarController {
         }
     }
 
-
-    public void addCar(Vehicle car) {
-        model.addCar(car);
-        view.addCar(car);
+    public static void addCar(Vehicle vehicle) {
+        model.addCar(vehicle);
+        view.addCar(vehicle);
     }
 
+    public void removeCar(){
+        model.removeCar();
+        view.removeCar();
+    }
 
     public void gas(int amount) {
         model.gas(amount);

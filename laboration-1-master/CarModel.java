@@ -1,26 +1,24 @@
 import java.util.ArrayList;
-import java.util.Deque;
 
 public class CarModel {
 
-    public void CarModelImpl() {
-        cars.add(new Saab95(0,0, Direction.EAST));
-        cars.add(new Scania(0,0, Direction.EAST));
-        cars.add(new Volvo240(0,0, Direction.EAST));
-    }
-
-    // member fields:
-
     ArrayList<Vehicle> cars = new ArrayList<>();
 
-    // methods:
     public void addCar(Vehicle car) {
+        if(cars.size() < 10) {
         cars.add(car);
+        }
+    }
+
+    public void removeCar(){
+        if(cars.size() > 0) {
+        cars.remove(cars.size()-1);
+        }
     }
 
     public void updateCars() {
         for (Vehicle vehicle : cars) {
-            if (vehicle.getxPos() > 700 || vehicle.getxPos() < 0){
+            if (vehicle.getxPos() > 700 || vehicle.getxPos() < 0 || vehicle.getyPos() > 700 || vehicle.getyPos() < 0){
                 vehicle.turnLeft();
                 vehicle.turnLeft();
                 vehicle.move();

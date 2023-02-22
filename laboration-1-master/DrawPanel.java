@@ -1,6 +1,5 @@
 import java.awt.*;
 import java.awt.image.BufferedImage;
-import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import javax.imageio.ImageIO;
@@ -20,22 +19,32 @@ public class DrawPanel extends JPanel{
         setDoubleBuffered(true);
         setPreferredSize(new Dimension(x, y));
         setBackground(Color.blue);
-
-        try {
-            images.add(ImageIO.read(getClass().getResourceAsStream("pics/Saab95.jpg")));
-            images.add(ImageIO.read(getClass().getResourceAsStream("pics/Scania.jpg")));
-            images.add(ImageIO.read(getClass().getResourceAsStream("pics/Volvo240.jpg")));
-            positions.add(new Point());
-            positions.add(new Point());
-            positions.add(new Point());
-        } catch (IOException ex) {
-            ex.printStackTrace();
-        }
     }
 
     public void addCar(Vehicle car) {
-        cars.add(car);
-        positions.add(new Point());
+        if(cars.size() < 10) {
+            cars.add(car);
+            positions.add(new Point());
+            try {
+                if (car instanceof Scania) {
+                    images.add(ImageIO.read(getClass().getResourceAsStream("pics/Scania.jpg")));
+                } else if (car instanceof Saab95) {
+                    images.add(ImageIO.read(getClass().getResourceAsStream("pics/Saab95.jpg")));
+                } else {
+                    images.add(ImageIO.read(getClass().getResourceAsStream("pics/Volvo240.jpg")));
+                }
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            }
+        }
+    }
+
+    public void removeCar(){
+        if(cars.size() > 0){
+        positions.remove(cars.size()-1);
+        images.remove(cars.size()-1);
+        cars.remove(cars.size()-1);
+        }
     }
 
 
@@ -46,10 +55,8 @@ public class DrawPanel extends JPanel{
         super.paintComponent(g);
         for(int i = 0; i < images.size(); i++){
             Point p = positions.get(i);
-            g.drawImage(images.get(i), p.x, p.y + i*100, null);
+            g.drawImage(images.get(i), p.x, p.y , null);
         }
-
-
     }
 
     public void updateCarPosition(int x, int y, int index) {
