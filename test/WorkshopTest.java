@@ -26,6 +26,13 @@ public class WorkshopTest {
         assertEquals(car, Volvo240);
     }
 
+    @Test
+    public void testUnloadCar(){
+        workshop.loadCar(Volvo240);
+        workshop.unloadCar();
+        assertTrue(workshop.carLoad.getCars().isEmpty());
+    }
+
     @Test(expected = IllegalArgumentException.class)
     public void testStoreFail(){
         for (int i = 0; i < CarLoad.getMaxCars() + 1; i++) {

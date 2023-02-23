@@ -4,18 +4,17 @@ import java.awt.*;
 import java.util.Random;
 /**
  * This class represents the full view of the MVC pattern of your car simulator.
- * It initializes with being center on the screen and attaching it's controller in it's state.
+ * It initializes with being center on the screen and attaching it's carModel in it's state.
  * It communicates with the Controller by calling methods of it when an action fires of in
  * each of it's components.
  * TODO: Write more actionListeners and wire the rest of the buttons
  **/
 
 public class CarView extends JFrame{
-    Random rand = new Random();
+
     private static final int X = 800;
     private static final int Y = 800;
-
-    private CarController controller;
+    private CarModel carModel;
     private DrawPanel drawPanel;
     private JPanel controlPanel;
     private JButton gasButton;
@@ -33,9 +32,9 @@ public class CarView extends JFrame{
     private JButton removeButton;
 
 
-    public CarView(String title, CarController controller) {
+    public CarView(String title, CarModel carModel) {
         super(title);
-        this.controller = controller;
+        this.carModel = carModel;
         this.drawPanel = new DrawPanel(X, Y - 240);
         this.controlPanel = new JPanel();
         this.gasButton = new JButton("Gas");
@@ -52,6 +51,7 @@ public class CarView extends JFrame{
         this.removeButton = new JButton("Remove");
         this.gasSpinner = new JSpinner(new SpinnerNumberModel(0, 0, 100, 1));
         initComponents();
+        addActionListeners();
     }
 
     private void initComponents() {
@@ -61,30 +61,17 @@ public class CarView extends JFrame{
 
         add(drawPanel);
 
-        gasButton.addActionListener(e -> controller.gas((int) gasSpinner.getValue()));
-        startButton.addActionListener(e -> controller.startEngine());
-        stopButton.addActionListener(e -> controller.stopEngine());
-        turboOnButton.addActionListener(e -> controller.turboOn());
-        turboOffButton.addActionListener(e -> controller.turboOff());
-        liftBedButton.addActionListener(e -> controller.liftBed());
-        lowerBedButton.addActionListener(e -> controller.lowerBed());
-
-        removeButton.addActionListener(e -> controller.removeCar());
-        addSaabButton.addActionListener(e -> controller.addCar(new Saab95(rand.nextInt(700), rand.nextInt(400), Direction.EAST)));
-        addScaniaButton.addActionListener(e -> controller.addCar(new Scania(rand.nextInt(700), rand.nextInt(400), Direction.EAST)));
-        addVolvoButton.addActionListener(e -> controller.addCar(new Volvo240(rand.nextInt(700), rand.nextInt(400), Direction.EAST)));
-
-
         controlPanel.setLayout(new GridLayout(3, 4));
         controlPanel.add(gasButton);
-        controlPanel.add(turboOnButton);
-        controlPanel.add(liftBedButton);
         controlPanel.add(brakeButton);
+        controlPanel.add(turboOnButton);
         controlPanel.add(turboOffButton);
-        controlPanel.add(lowerBedButton);
 
+        controlPanel.add(liftBedButton);
+        controlPanel.add(lowerBedButton);
         controlPanel.add(addSaabButton);
         controlPanel.add(addScaniaButton);
+
         controlPanel.add(addVolvoButton);
         controlPanel.add(removeButton);
 
@@ -116,12 +103,29 @@ public class CarView extends JFrame{
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
 
+    private void addActionListeners(){
+        gasButton.addActionListener(e -> carModel.gas((int) gasSpinner.getValue()));
+        startButton.addActionListener(e -> carModel.startEngine());
+        stopButton.addActionListener(e -> carModel.stopEngine());
+        turboOnButton.addActionListener(e -> carModel.turboOn());
+        turboOffButton.addActionListener(e -> carModel.turboOff());
+        liftBedButton.addActionListener(e -> carModel.liftBed());
+        lowerBedButton.addActionListener(e -> carModel.lowerBed());
+
+        removeButton.addActionListener(e -> removeCar());
+        addSaabButton.addActionListener(e -> addCar(VehicleFactory.addVehicle(VehicleType.SAAB95)));
+        addScaniaButton.addActionListener(e -> addCar(VehicleFactory.addVehicle(VehicleType.SCANIA)));
+        addVolvoButton.addActionListener(e -> addCar(VehicleFactory.addVehicle(VehicleType.VOLVO240)));
+    }
+
     public void addCar(Vehicle car) {
         drawPanel.addCar(car);
+        carModel.addCar(car);
     }
 
     public void removeCar(){
         drawPanel.removeCar();
+        carModel.removeCar();
     }
 
 

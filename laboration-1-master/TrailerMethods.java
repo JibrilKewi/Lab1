@@ -9,5 +9,4 @@ public interface TrailerMethods {
      */
     void lowerTrailer();
 
-    boolean isTrailerMovable();
 }

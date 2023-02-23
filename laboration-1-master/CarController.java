@@ -12,21 +12,9 @@ import java.awt.event.ActionListener;
 
 public class CarController {
     private final int delay = 50;
-    private Timer timer = new Timer(delay, new TimerListener());
-    private static CarModel model;
-    private static CarView view;
-
-    public void start() {
-        timer.start();
-    }
-
-    public static void main(String[] args) {
-        CarController cc = new CarController();
-        model = new CarModel();
-        view = new CarView("CarSim 2.0", cc);
-        cc.timer.start();
-    }
-
+    private final Timer timer = new Timer(delay, new TimerListener());
+    private static final CarModel model = new CarModel();
+    private static final CarView view = new CarView("CarSim 2.0", model);
 
     /* Each step the TimerListener moves all the cars in the list and tells the
     * view to update its images. Change this method to your needs.
@@ -43,46 +31,10 @@ public class CarController {
         }
     }
 
-    public static void addCar(Vehicle vehicle) {
-        model.addCar(vehicle);
-        view.addCar(vehicle);
+    public void start() {
+        timer.start();
     }
 
-    public void removeCar(){
-        model.removeCar();
-        view.removeCar();
-    }
 
-    public void gas(int amount) {
-        model.gas(amount);
-    }
-
-    public void brake(int amount) {
-        model.brake(amount);
-    }
-
-    public void stopEngine() {
-        model.stopEngine();
-    }
-
-    public void startEngine() {
-        model.startEngine();
-    }
-
-    public void turboOn() {
-        model.turboOn();
-    }
-
-    public void turboOff() {
-        model.turboOff();
-    }
-
-    public void liftBed() {
-        model.liftBed();
-    }
-
-    public void lowerBed() {
-        model.lowerBed();
-    }
 }
 

@@ -18,7 +18,7 @@ public class CarModel {
 
     public void updateCars() {
         for (Vehicle vehicle : cars) {
-            if (vehicle.getxPos() > 700 || vehicle.getxPos() < 0 || vehicle.getyPos() > 700 || vehicle.getyPos() < 0){
+            if (vehicle.getxPos() > 700 || vehicle.getxPos() < 0 || vehicle.getyPos() > 500 || vehicle.getyPos() < 0){
                 vehicle.turnLeft();
                 vehicle.turnLeft();
                 vehicle.move();
