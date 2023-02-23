@@ -19,22 +19,27 @@ public class CarController {
     /* Each step the TimerListener moves all the cars in the list and tells the
     * view to update its images. Change this method to your needs.
     * */
-    private class TimerListener implements ActionListener {
+    private static class TimerListener implements ActionListener {
         public void actionPerformed(ActionEvent e) {
-            for(Vehicle vehicle : model.getCars()){
-                model.updateCars();
-                int x = (int) Math.round(vehicle.getxPos());
-                int y = (int) Math.round(vehicle.getyPos());
-                int index = model.getCars().indexOf(vehicle);
-                view.updateCarPosition(x, y, index);
+            model.updateCars();
+            updateCars();
             }
+        }
+
+
+    public static void updateCars(){
+        view.repaint();
+        for(Vehicle vehicle : model.getCars()){
+            int x = (int) Math.round(vehicle.getxPos());
+            int y = (int) Math.round(vehicle.getyPos());
+            int index = model.getCars().indexOf(vehicle);
+            view.updateCarPosition(x, y, index);
         }
     }
 
     public void start() {
         timer.start();
     }
-
 
 }
 

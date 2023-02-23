@@ -11,9 +11,9 @@ public class DrawPanel extends JPanel{
 
 
     // TODO: Make this general for all cars
-    private ArrayList<Vehicle> cars = new ArrayList<>();
-    private ArrayList<BufferedImage> images = new ArrayList<>();
-    private ArrayList<Point> positions = new ArrayList<>();
+    private final ArrayList<Vehicle> cars = new ArrayList<>();
+    private final ArrayList<BufferedImage> images = new ArrayList<>();
+    private final ArrayList<Point> positions = new ArrayList<>();
 
     public DrawPanel(int x, int y) {
         setDoubleBuffered(true);
@@ -41,9 +41,9 @@ public class DrawPanel extends JPanel{
 
     public void removeCar(){
         if(cars.size() > 0){
-        positions.remove(cars.size()-1);
-        images.remove(cars.size()-1);
-        cars.remove(cars.size()-1);
+            images.remove(cars.size()-1);
+            positions.remove(cars.size()-1);
+            cars.remove(cars.size()-1);
         }
     }
 
@@ -61,7 +61,7 @@ public class DrawPanel extends JPanel{
 
     public void updateCarPosition(int x, int y, int index) {
        positions.set(index, new Point(x, y));
-        repaint();
+       repaint();
     }
 
 }
