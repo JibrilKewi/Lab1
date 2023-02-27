@@ -1,7 +1,8 @@
+import model.Direction;
+import model.Volvo240;
+import model.Workshop;
 import org.junit.Before;
 import org.junit.Test;
-
-import java.util.Deque;
 
 import static org.junit.Assert.*;
 
@@ -32,7 +33,7 @@ public class WorkshopTest {
             try {
                 workshop.storeVehicle(Volvo240);
             } catch (IllegalArgumentException e) {
-                assertEquals("Workshop is full", e.getMessage());
+                assertEquals("model.Workshop is full", e.getMessage());
                 throw e;
             }
         }

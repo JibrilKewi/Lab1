@@ -1,3 +1,5 @@
+import model.Direction;
+import model.Scania;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -6,7 +8,7 @@ import static org.junit.Assert.assertEquals;
 
 public class ScaniaTest {
 
-    private Scania Scania;
+    private model.Scania Scania;
 
     @Before
     public void init(){

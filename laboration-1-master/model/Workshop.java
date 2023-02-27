@@ -1,12 +1,14 @@
+package model;
+
 import java.util.Deque;
 import java.util.LinkedList;
 
 /**
- * Workshop is used to initialize workshop-object which can store cars.
- * Use Generic types in order to accept a specific car type ex (Volvo240)
+ * model.Workshop is used to initialize workshop-object which can store cars.
+ * Use Generic types in order to accept a specific car type ex (model.Volvo240)
  * or just cars in general
- * Ex: Can construct a workshop that only takes Volvo240 and one that only
- * takes Saab95
+ * Ex: Can construct a workshop that only takes model.Volvo240 and one that only
+ * takes model.Saab95
  */
 
 public class Workshop <T extends Vehicle>{
@@ -26,7 +28,7 @@ public class Workshop <T extends Vehicle>{
         if (vehicleLoad.size() < capacity){
             vehicleLoad.push(vehicle);
         } else {
-            throw new IllegalArgumentException("Workshop is full");
+            throw new IllegalArgumentException("model.Workshop is full");
         }
     }
 

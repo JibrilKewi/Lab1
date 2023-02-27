@@ -1,3 +1,7 @@
+import model.Car;
+import model.Direction;
+import model.Saab95;
+import model.Volvo240;
 import org.junit.Before;
 import org.junit.Test;
 

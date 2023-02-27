@@ -1,12 +1,16 @@
+package model;
+
+import model.Vehicle;
+
 import java.awt.*;
 
-public abstract class MotorizedVehicle extends Vehicle{
+public abstract class MotorizedVehicle extends Vehicle {
 
     private final double enginePower; // The engine power of the car.
 
 
     MotorizedVehicle(int nrDoors, double enginePower, Color color, String modelName,
-            double xPos, double yPos, Direction dir, double currentSpeed) {
+                     double xPos, double yPos, Direction dir, double currentSpeed) {
 
         super(nrDoors, color, modelName, yPos, xPos, dir, currentSpeed);
         this.enginePower = enginePower;

@@ -1,9 +1,15 @@
+package model;
+
+import model.AbstractPositionable;
+import model.Direction;
+import model.Movable;
+
 /**
- * AbstractMovable collects and handles all information about position and movement.
+ * model.AbstractMovable collects and handles all information about position and movement.
  * Also contains the necessary methods for changing this information by applying these methods.
  * Implements the interface {@link Movable}
  */
-public abstract class AbstractMovable extends AbstractPositionable implements Movable  {
+public abstract class AbstractMovable extends AbstractPositionable implements Movable {
 
     private Direction dir; // The direction of the car.
     public double currentSpeed; /** The current speed of the object. */

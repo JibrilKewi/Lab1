@@ -1,5 +1,7 @@
+package model;
+
 /**
- * HelperMethods contains the helper method amountInterval.
+ * model.HelperMethods contains the helper method amountInterval.
  */
 public abstract class HelperMethods {
 
