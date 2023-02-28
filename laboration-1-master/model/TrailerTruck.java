@@ -1,14 +1,16 @@
+package model;
+
 import java.awt.*;
 /**
- * TrailerTruck holds the general characteristics and methods for a TrailerTruck object.
+ * model.TrailerTruck holds the general characteristics and methods for a model.TrailerTruck object.
  */
 
-public abstract class TrailerTruck extends Vehicle {
+public abstract class TrailerTruck extends MotorizedVehicle {
 
     public Trailer trailer;
 
     TrailerTruck(int nrDoors, double enginePower, Color color, String modelName,
-          double xPos, double yPos, Direction dir, double currentSpeed){
+                 double xPos, double yPos, Direction dir, double currentSpeed){
 
         super(nrDoors, enginePower, color, modelName, xPos, yPos, dir, currentSpeed);
         this.trailer = new Trailer();

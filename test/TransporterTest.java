@@ -1,8 +1,10 @@
+import model.Car;
+import model.CarTransporter;
+import model.Direction;
+import model.Volvo240;
 import org.junit.Before;
 import org.junit.Test;
 
-
-import java.util.Deque;
 
 import static org.junit.Assert.*;
 
@@ -12,7 +14,7 @@ public class TransporterTest {
 
     @Before
     public void init(){
-        Volvo240 = new Volvo240(1,1,Direction.NORTH);
+        Volvo240 = new Volvo240(1,1, Direction.NORTH);
         transporter = new CarTransporter(5,5,Direction.NORTH);
         Volvo240.startEngine();
     }

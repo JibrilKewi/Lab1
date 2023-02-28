@@ -1,7 +1,11 @@
+import model.CarModel;
+import model.MotorizedVehicle;
+import model.VehicleFactory;
+import model.VehicleType;
 import javax.swing.*;
 
 import java.awt.*;
-import java.util.Random;
+
 /**
  * This class represents the full view of the MVC pattern of your car simulator.
  * It initializes with being center on the screen and attaching it's carModel in it's state.
@@ -119,7 +123,7 @@ public class CarView extends JFrame{
         addVolvoButton.addActionListener(e -> addCar(VehicleFactory.addVehicle(VehicleType.VOLVO240)));
     }
 
-    public void addCar(Vehicle car) {
+    public void addCar(MotorizedVehicle car) {
         drawPanel.addCar(car);
         carModel.addCar(car);
     }

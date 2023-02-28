@@ -1,15 +1,20 @@
+package model;
+
+import model.TrailerMethods;
+import model.TrailerTruck;
+
 import java.awt.*;
 
 /**
- * Scania is used to create and initialize a Scania object.
- * A Scania object contains all attributes from the super-class Truck, see {@link TrailerTruck}.
- * A Scania object is initialized with position along the x- and y- coordinates.
+ * model.Scania is used to create and initialize a model.Scania object.
+ * A model.Scania object contains all attributes from the super-class Truck, see {@link TrailerTruck}.
+ * A model.Scania object is initialized with position along the x- and y- coordinates.
  * The other characteristics are set by default.
  */
-public class Scania extends TrailerTruck implements TrailerMethods{
+public class Scania extends TrailerTruck implements TrailerMethods {
 
-    Scania(double xPos, double yPos, Direction dir){
-        super(2, 100, Color.black, "Scania", xPos, yPos, dir, 0);
+    public Scania(double xPos, double yPos, Direction dir){
+        super(2, 100, Color.black, "model.Scania", xPos, yPos, dir, 0);
     }
 
     /**

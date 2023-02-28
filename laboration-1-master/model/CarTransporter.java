@@ -1,12 +1,18 @@
+package model;
+
+import model.Direction;
+import model.TrailerMethods;
+import model.TrailerTruck;
+
 import java.awt.*;
 
 
 /**
- * CarTransporter is used to initialize a CarTransporter-object.
- * A CarTransporter object contains all attributes from the super-class Truck, see {@link TrailerTruck}.
- * A CarTransporter object is initialized with position along the x- and y- coordinates.
+ * model.CarTransporter is used to initialize a model.CarTransporter-object.
+ * A model.CarTransporter object contains all attributes from the super-class Truck, see {@link TrailerTruck}.
+ * A model.CarTransporter object is initialized with position along the x- and y- coordinates.
  * The other characteristics are set by default.
- * A CarTransporter can load and transport Car objects, see {@link Car}.
+ * A model.CarTransporter can load and transport model.Car objects, see {@link Car}.
  */
 
 
@@ -17,7 +23,7 @@ public class CarTransporter extends TrailerTruck implements TrailerMethods, CarL
     private int currentWeight = 0;
 
     CarTransporter(double xPos, double yPos, Direction dir) {
-        super(2, 300, Color.black, "CarTransporter", xPos, yPos, dir, 0);
+        super(2, 300, Color.black, "model.CarTransporter", xPos, yPos, dir, 0);
 
         this.load = new CarLoad<>();
         this.isRampUp = false;
@@ -29,7 +35,7 @@ public class CarTransporter extends TrailerTruck implements TrailerMethods, CarL
      */
     @Override
     public void lowerTrailer(){
-            isRampUp = false;
+        isRampUp = false;
     }
 
     /**
@@ -37,7 +43,7 @@ public class CarTransporter extends TrailerTruck implements TrailerMethods, CarL
      */
     @Override
     public void raiseTrailer(){
-            isRampUp = true;
+        isRampUp = true;
     }
 
     /**
@@ -55,11 +61,11 @@ public class CarTransporter extends TrailerTruck implements TrailerMethods, CarL
      */
     private void updateLoadPos(){
         for (Car car : load.getCars()) {
-                car.setxPos(getxPos());
-                car.setyPos(getyPos());
-                car.setDir(getDir());
-            }
+            car.setxPos(getxPos());
+            car.setyPos(getyPos());
+            car.setDir(getDir());
         }
+    }
 
 
     /**
@@ -124,7 +130,7 @@ public class CarTransporter extends TrailerTruck implements TrailerMethods, CarL
     private int carLoadWeight(){
         for (Car car : load.getCars()) {
             currentWeight += car.getWeight();}
-            return currentWeight;
+        return currentWeight;
     }
 
 

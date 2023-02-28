@@ -1,13 +1,13 @@
+import model.Direction;
+import model.Volvo240;
+import model.Workshop;
 import org.junit.Before;
 import org.junit.Test;
-
-import java.util.Deque;
 
 import static org.junit.Assert.*;
 
 
 public class WorkshopTest {
-
 
     private Volvo240 Volvo240;
 
@@ -16,30 +16,24 @@ public class WorkshopTest {
     @Before
     public void init(){
         Volvo240 = new Volvo240(1,1, Direction.NORTH);
-        workshop = new Workshop<>();
+        workshop = new Workshop<>(2);
     }
 
     @Test
-    public void testStoreCar(){
-        workshop.loadCar(Volvo240);
-        Car car = workshop.carLoad.getCars().getLast();
-        assertEquals(car, Volvo240);
-    }
+    public void testStoreVehicle(){
+        workshop.storeVehicle(Volvo240);
+        Volvo240 Workshop = workshop.getVehicle();
+        assertEquals(Workshop, Volvo240);
 
-    @Test
-    public void testUnloadCar(){
-        workshop.loadCar(Volvo240);
-        workshop.unloadCar();
-        assertTrue(workshop.carLoad.getCars().isEmpty());
     }
 
     @Test(expected = IllegalArgumentException.class)
     public void testStoreFail(){
-        for (int i = 0; i < CarLoad.getMaxCars() + 1; i++) {
+        for (int i = 0; i < workshop.getCapacity() + 1; i++) {
             try {
-                workshop.loadCar(Volvo240);
+                workshop.storeVehicle(Volvo240);
             } catch (IllegalArgumentException e) {
-                assertEquals("Workshop is full", e.getMessage());
+                assertEquals("model.Workshop is full", e.getMessage());
                 throw e;
             }
         }

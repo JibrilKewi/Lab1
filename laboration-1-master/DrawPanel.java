@@ -1,3 +1,7 @@
+import model.MotorizedVehicle;
+import model.Saab95;
+import model.Scania;
+
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
@@ -11,9 +15,9 @@ public class DrawPanel extends JPanel{
 
 
     // TODO: Make this general for all cars
-    private final ArrayList<Vehicle> cars = new ArrayList<>();
-    private final ArrayList<BufferedImage> images = new ArrayList<>();
-    private final ArrayList<Point> positions = new ArrayList<>();
+    private ArrayList<MotorizedVehicle> cars = new ArrayList<>();
+    private ArrayList<BufferedImage> images = new ArrayList<>();
+    private ArrayList<Point> positions = new ArrayList<>();
 
     public DrawPanel(int x, int y) {
         setDoubleBuffered(true);
@@ -21,17 +25,17 @@ public class DrawPanel extends JPanel{
         setBackground(Color.blue);
     }
 
-    public void addCar(Vehicle car) {
+    public void addCar(MotorizedVehicle car) {
         if(cars.size() < 10) {
             cars.add(car);
             positions.add(new Point());
             try {
                 if (car instanceof Scania) {
-                    images.add(ImageIO.read(getClass().getResourceAsStream("pics/Scania.jpg")));
+                    images.add(ImageIO.read(getClass().getResourceAsStream("model/pics/Scania.jpg")));
                 } else if (car instanceof Saab95) {
-                    images.add(ImageIO.read(getClass().getResourceAsStream("pics/Saab95.jpg")));
+                    images.add(ImageIO.read(getClass().getResourceAsStream("model/pics/Saab95.jpg")));
                 } else {
-                    images.add(ImageIO.read(getClass().getResourceAsStream("pics/Volvo240.jpg")));
+                    images.add(ImageIO.read(getClass().getResourceAsStream("model/pics/Volvo240.jpg")));
                 }
             } catch (IOException ex) {
                 ex.printStackTrace();
@@ -60,8 +64,8 @@ public class DrawPanel extends JPanel{
     }
 
     public void updateCarPosition(int x, int y, int index) {
-       positions.set(index, new Point(x, y));
-       repaint();
+        positions.set(index, new Point(x, y));
+        repaint();
     }
 
 }

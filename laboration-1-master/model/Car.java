@@ -1,9 +1,14 @@
+package model;
+
+import model.Direction;
+import model.MotorizedVehicle;
+
 import java.awt.*;
 
 /**
- * Car holds the specifics for a car object.
+ * model.Car holds the specifics for a car object.
  */
-public abstract class Car extends Vehicle{
+public abstract class Car extends MotorizedVehicle {
 
     private final double weight;
 
