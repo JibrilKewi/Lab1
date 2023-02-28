@@ -30,7 +30,7 @@ public class TransporterTest {
     public void testLoadCar(){
         transporter.lowerTrailer();
         transporter.loadCar(Volvo240);
-        Car car = transporter.getCarLoad().getFirst();
+        Object car = transporter.load.getCars().getFirst();
         assertEquals(car, Volvo240);
     }
 
@@ -38,8 +38,8 @@ public class TransporterTest {
     public void testUnloadCar(){
         transporter.lowerTrailer();
         transporter.loadCar(Volvo240);
-        transporter.unLoadCar();
-        assertTrue(transporter.getCarLoad().isEmpty());
+        transporter.unloadCar();
+        assertTrue(transporter.load.getCars().isEmpty());
     }
 
     @Test

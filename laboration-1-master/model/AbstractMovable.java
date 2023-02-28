@@ -49,8 +49,8 @@ public abstract class AbstractMovable extends AbstractPositionable implements Mo
     @Override
     public void move() {
         switch (dir) {
-            case NORTH -> yPos += currentSpeed;
-            case SOUTH -> yPos -= currentSpeed;
+            case NORTH -> yPos -= currentSpeed;
+            case SOUTH -> yPos += currentSpeed;
             case EAST -> xPos += currentSpeed;
             case WEST -> xPos -= currentSpeed;
         }
