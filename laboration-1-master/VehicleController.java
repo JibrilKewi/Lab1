@@ -28,6 +28,5 @@ public class VehicleController implements ActionListener {
             view.updateCarPosition(x, y, index);
         }
     }
-
 }
 

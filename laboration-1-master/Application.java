@@ -6,11 +6,11 @@ public class Application {
         JFrame frame = new JFrame("Carsim");
         CarModel carModel = new CarModel();
         VehicleView view = new VehicleView(carModel);
+        VehicleController vc = new VehicleController(carModel, view);
         frame.add(view);
         frame.pack();
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setVisible(true);
-        TimeController cc = new TimeController(carModel, view);
-        cc.start();
+        new Timer(50, vc).start();
     }
 }

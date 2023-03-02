@@ -6,6 +6,7 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Objects;
 import javax.imageio.ImageIO;
 import javax.swing.*;
 
@@ -31,11 +32,11 @@ public class DrawPanel extends JPanel{
             positions.add(new Point());
             try {
                 if (car instanceof Scania) {
-                    images.add(ImageIO.read(getClass().getResourceAsStream("model/pics/Scania.jpg")));
+                    images.add(ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("model/pics/Scania.jpg"))));
                 } else if (car instanceof Saab95) {
-                    images.add(ImageIO.read(getClass().getResourceAsStream("model/pics/Saab95.jpg")));
+                    images.add(ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("model/pics/Saab95.jpg"))));
                 } else {
-                    images.add(ImageIO.read(getClass().getResourceAsStream("model/pics/Volvo240.jpg")));
+                    images.add(ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("model/pics/Volvo240.jpg"))));
                 }
             } catch (IOException ex) {
                 ex.printStackTrace();
