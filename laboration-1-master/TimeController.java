@@ -1,10 +1,6 @@
 import model.CarModel;
-import model.Vehicle;
 
 import javax.swing.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.sql.Time;
 
 
 /*
@@ -13,15 +9,19 @@ import java.sql.Time;
  * modifying the model state and the updating the view.
  */
 
-public class CarController{
+public class TimeController {
     private final int delay = 50;
-    TimeListener timeListener = new TimeListener();
-    private final Timer timer = new Timer(delay, timeListener);
+    private final Timer timer;
+
+    public TimeController(CarModel model, VehicleView view) {
+        this.timer = new Timer(delay, new VehicleController(model, view));
+    }
 
     public void start() {
         timer.start();
     }
-
 }
+
+
 
 

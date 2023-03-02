@@ -4,9 +4,9 @@ import java.util.Deque;
 import java.util.LinkedList;
 
 /**
- * model.Workshop is used to initialize workshop-object which can store cars.
+ * model.Workshop is used to initialize workshop-object which can store vehicles.
  * Use Generic types in order to accept a specific car type ex (model.Volvo240)
- * or just cars in general
+ * or just vehicles in general
  * Ex: Can construct a workshop that only takes model.Volvo240 and one that only
  * takes model.Saab95
  */

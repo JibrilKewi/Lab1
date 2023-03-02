@@ -13,7 +13,7 @@ public class CarLoad <T extends Car>{
     /**
      * loadCar() loads a car to a car-transporter object if the ramp is down, the weight of the load does not exceed
      * a max value, the car is close enough to the transporter and the car-transporter-trailer is not full.
-     * Also sets the cars coordinates to that of the car-transporter.
+     * Also sets the vehicles coordinates to that of the car-transporter.
      * @param car The car that will be loaded.
      */
 
@@ -30,7 +30,7 @@ public class CarLoad <T extends Car>{
 
 
     /**
-     * notFullTrailer() checks whether the car-transporters's load holds the maximum number of cars or not.
+     * notFullTrailer() checks whether the car-transporters's load holds the maximum number of vehicles or not.
      * @return True if the trailer is not full otherwise false.
      */
     public boolean notFullLoad(){
@@ -38,8 +38,8 @@ public class CarLoad <T extends Car>{
     }
 
     /**
-     * getCarLoad() is a getter method for getting the loaded cars.
-     * @return A deque containing all currently loaded cars.
+     * getCarLoad() is a getter method for getting the loaded vehicles.
+     * @return A deque containing all currently loaded vehicles.
      */
     public Deque<T> getCars() {
         return cars;

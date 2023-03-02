@@ -56,7 +56,7 @@ public class CarTransporter extends TrailerTruck implements TrailerMethods, CarL
 
 
     /**
-     * updateLoadPos() updates the position of all cars on the car-transporter by setting iterating over all cars
+     * updateLoadPos() updates the position of all vehicles on the car-transporter by setting iterating over all vehicles
      * in the carload and updating their coordinates and direction to that of the car-transporter.
      */
     private void updateLoadPos(){
@@ -80,7 +80,7 @@ public class CarTransporter extends TrailerTruck implements TrailerMethods, CarL
 
     /**
      * move() will move the car-transporter in the current direction it is facing based on its current speed and will
-     * update the position and direction of all cars currently loaded on the car-transporter.
+     * update the position and direction of all vehicles currently loaded on the car-transporter.
      */
     @Override
     public void move(){
@@ -97,7 +97,7 @@ public class CarTransporter extends TrailerTruck implements TrailerMethods, CarL
     /**
      * loadCar() loads a car to a car-transporter object if the ramp is down, the weight of the load does not exceed
      * a max value, the car is close enough to the transporter and the car-transporter-trailer is not full.
-     * Also sets the cars coordinates to that of the car-transporter.
+     * Also sets the vehicles coordinates to that of the car-transporter.
      * @param car The car that will be loaded.
      */
 
@@ -123,7 +123,7 @@ public class CarTransporter extends TrailerTruck implements TrailerMethods, CarL
     }
 
     /**
-     * carLoadWeight() iterates and applies the getWeight() on all cars in the carLoad and increments the
+     * carLoadWeight() iterates and applies the getWeight() on all vehicles in the carLoad and increments the
      * currentWeight with the weight of each car.
      * @return The current weight of the load.
      */
@@ -147,7 +147,7 @@ public class CarTransporter extends TrailerTruck implements TrailerMethods, CarL
 
     /**
      * isCloseEnough() check whether the car that is getting loaded in close enough to the car-transporter based on
-     * the cars current coordinates and the car-transporters coordinates.
+     * the vehicles current coordinates and the car-transporters coordinates.
      * @param car the car that wants to get loaded
      * @return True if it is close enough to the transporter
      */

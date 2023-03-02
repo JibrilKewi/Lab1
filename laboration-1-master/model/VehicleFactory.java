@@ -1,8 +1,5 @@
 package model;
 
-import model.MotorizedVehicle;
-import view.*;
-
 import java.util.Random;
 
 public class VehicleFactory {
