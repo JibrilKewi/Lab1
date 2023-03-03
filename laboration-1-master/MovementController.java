@@ -4,14 +4,14 @@ import model.Vehicle;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class VehicleController implements ActionListener {
+public class MovementController implements ActionListener {
 
     private static CarModel model;
     private static VehicleView view;
 
-    public VehicleController(CarModel model, VehicleView view) {
-        VehicleController.model = model;
-        VehicleController.view = view;
+    public MovementController(CarModel model, VehicleView view) {
+        MovementController.model = model;
+        MovementController.view = view;
     }
 
     public void actionPerformed(ActionEvent e) {

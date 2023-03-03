@@ -1,4 +1,5 @@
 import model.CarModel;
+import model.ViewListnener;
 
 import javax.swing.*;
 import java.awt.*;
@@ -6,6 +7,8 @@ import java.awt.*;
 public class VehicleView extends JPanel {
     private static final int X = 800;
     private static final int Y = 800;
+
+    private ControlPanel controlPanel;
 
     private DrawPanel drawPanel;
     private final CarModel carModel;
@@ -19,12 +22,16 @@ public class VehicleView extends JPanel {
     // Sets everything in place and fits everything
     private void initComponents() {
         drawPanel = new DrawPanel(X, Y - 240);
-        ControlPanel controlPanel = new ControlPanel(carModel, X, Y);
-        AddRemoveController addRemoveController = new AddRemoveController(carModel, drawPanel);
+        this.controlPanel = new ControlPanel(X, Y);
+        AddRemovePanel addRemovePanel = new AddRemovePanel(carModel, drawPanel);
         this.setLayout(new BorderLayout());
         this.add(drawPanel, BorderLayout.CENTER);
         this.add(controlPanel, BorderLayout.PAGE_END);
-        this.add(addRemoveController.getAddRemovePanel(), BorderLayout.PAGE_START);
+        this.add(addRemovePanel.getAddRemovePanel(), BorderLayout.PAGE_START);
+    }
+
+    public void addControlListener(ViewListnener listener) {
+        controlPanel.addListener(listener);
     }
 
     public void updateCarPosition(int x, int y, int index) {

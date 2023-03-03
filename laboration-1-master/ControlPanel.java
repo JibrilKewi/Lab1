@@ -1,10 +1,10 @@
-import model.CarModel;
-import model.MotorizedVehicle;
-import model.VehicleFactory;
-import model.VehicleType;
-import javax.swing.*;
 
+import model.ViewListnener;
+import java.util.function.Consumer;
+import javax.swing.*;
+import java.util.List;
 import java.awt.*;
+import java.util.ArrayList;
 
 /**
  * This class represents the full view of the MVC pattern of your car simulator.
@@ -15,7 +15,8 @@ import java.awt.*;
  **/
 
 public class ControlPanel extends JPanel{
-    private CarModel carModel;
+    private final List<ViewListnener> listeners = new ArrayList<>();
+    private int gasAmount = 0;
     private JButton gasButton;
     private JButton brakeButton;
     private JButton startButton;
@@ -28,11 +29,10 @@ public class ControlPanel extends JPanel{
     private final int width;
     private final int height;
 
-    public ControlPanel(CarModel carModel, int width, int height) {
+    public ControlPanel(int width, int height) {
         this.setSize(new Dimension(width, height));
         this.width = width;
         this.height = height;
-        this.carModel = carModel;
         this.setLayout(new FlowLayout(FlowLayout.LEFT, 0, 0));
         initComponents();
         addActionListeners();
@@ -55,7 +55,7 @@ public class ControlPanel extends JPanel{
         stopButton.setForeground(Color.black);
         gasSpinner = new JSpinner();
 
-        gasSpinner.setModel(new SpinnerNumberModel(0, 0, 100, 1));
+        gasSpinner.setModel(new SpinnerNumberModel(0, 0, 100, 5));
         gasPanel.setLayout(new BorderLayout());
         gasPanel.add(new JLabel("Amount of Gas"), BorderLayout.PAGE_START);
         gasPanel.add(gasSpinner, BorderLayout.PAGE_END);
@@ -75,16 +75,85 @@ public class ControlPanel extends JPanel{
         this.add(buttonPanel);
     }
 
-    private void addActionListeners(){
-        gasButton.addActionListener(e -> carModel.gas((int) gasSpinner.getValue()));
-        brakeButton.addActionListener(e -> carModel.brake((int) gasSpinner.getValue()));
-        startButton.addActionListener(e -> carModel.startEngine());
-        stopButton.addActionListener(e -> carModel.stopEngine());
-        turboOnButton.addActionListener(e -> carModel.turboOn());
-        turboOffButton.addActionListener(e -> carModel.turboOff());
-        liftBedButton.addActionListener(e -> carModel.liftBed());
-        lowerBedButton.addActionListener(e -> carModel.lowerBed());
+//    private void addActionListeners() {
+//        gasButton.addActionListener(e -> {
+//            int gasAmount = (int) gasSpinner.getValue();
+//            carModel.gas(gasAmount);
+//            carModel.notifyObservers();
+//        });
+//
+//        brakeButton.addActionListener(e -> {
+//            int brakeAmount = (int) gasSpinner.getValue();
+//            carModel.brake(brakeAmount);
+//            carModel.notifyObservers();
+//        });
+//
+//        startButton.addActionListener(e -> {
+//            carModel.startEngine();
+//            carModel.notifyObservers();
+//        });
+//
+//        stopButton.addActionListener(e -> {
+//            carModel.stopEngine();
+//            carModel.notifyObservers();
+//        });
+//
+//        turboOnButton.addActionListener(e -> {
+//            carModel.turboOn();
+//            carModel.notifyObservers();
+//        });
+//
+//        turboOffButton.addActionListener(e -> {
+//            carModel.turboOff();
+//            carModel.notifyObservers();
+//        });
+//
+//        liftBedButton.addActionListener(e -> {
+//            carModel.liftBed();
+//            carModel.notifyObservers();
+//        });
+//
+//        lowerBedButton.addActionListener(e -> {
+//            carModel.lowerBed();
+//            carModel.notifyObservers();
+//        });
+//
+//    }
 
+//    private void addActionListeners(){
+//        gasButton.addActionListener(e -> carModel.gas((int) gasSpinner.getValue()));
+//        brakeButton.addActionListener(e -> carModel.brake((int) gasSpinner.getValue()));
+//        startButton.addActionListener(e -> carModel.startEngine());
+//        stopButton.addActionListener(e -> carModel.stopEngine());
+//        turboOnButton.addActionListener(e -> carModel.turboOn());
+//        turboOffButton.addActionListener(e -> carModel.turboOff());
+//        liftBedButton.addActionListener(e -> carModel.liftBed());
+//        lowerBedButton.addActionListener(e -> carModel.lowerBed());
+//    }
+
+    private void addActionListeners() {
+        gasSpinner.addChangeListener(e -> gasAmount = (int) ((JSpinner) e.getSource()).getValue());
+        turboOnButton.addActionListener(e -> engageListeners(ViewListnener::turboOnPerformed));
+        turboOffButton.addActionListener(e -> engageListeners(ViewListnener::turboOffPerformed));
+        liftBedButton.addActionListener(e -> engageListeners(ViewListnener::liftBedPerformed));
+        lowerBedButton.addActionListener(e -> engageListeners(ViewListnener::lowerBedPerformed));
+        startButton.addActionListener(e -> engageListeners(ViewListnener::startPerformed));
+        stopButton.addActionListener(e -> engageListeners(ViewListnener::stopPerformed));
+        gasButton.addActionListener(e -> listeners.forEach(l -> l.gasPerformed(gasAmount)));
+        brakeButton.addActionListener(e -> listeners.forEach(l -> l.brakePerformed(gasAmount)));
     }
+
+    private void engageListeners(Consumer<ViewListnener> consumer) {
+        listeners.forEach(consumer);
+    }
+
+    public void addListener(ViewListnener listener) {
+        listeners.add(listener);
+    }
+
+    public void removeListener(ViewListnener listener) {
+        listeners.remove(listener);
+    }
+
 
 }

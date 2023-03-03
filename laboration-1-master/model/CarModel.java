@@ -1,8 +1,11 @@
 package model;
 
 import java.util.ArrayList;
+import java.util.List;
 
-public class CarModel {
+
+public class CarModel{
+
 
     ArrayList<MotorizedVehicle> vehicles = new ArrayList<>();
 
@@ -18,6 +21,7 @@ public class CarModel {
         }
     }
 
+
     public void updatePos() {
         for (MotorizedVehicle vehicle : vehicles) {
             if (vehicle.getxPos() > 700 || vehicle.getxPos() < 0 || vehicle.getyPos() > 700 || vehicle.getyPos() < 0){
@@ -32,6 +36,7 @@ public class CarModel {
     // Calls the gas method for each car once
     public void gas(int amount) {
         double gas = ((double) amount) / 100;
+        System.out.println("Gas: " + gas);
         vehicles.forEach(v -> v.gas(gas));
     }
 
@@ -84,5 +89,6 @@ public class CarModel {
     public ArrayList<MotorizedVehicle> getVehicles(){
         return vehicles;
     }
+
 
 }

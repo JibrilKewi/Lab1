@@ -5,12 +5,12 @@ import model.VehicleType;
 import javax.swing.*;
 import java.awt.*;
 
-public class AddRemoveController {
-    private DrawPanel drawPanel;
-    private CarModel carModel;
+public class AddRemovePanel {
+    private final DrawPanel drawPanel;
+    private final CarModel carModel;
     private JPanel addRemovePanel;
 
-    public AddRemoveController(CarModel carModel, DrawPanel drawPanel){
+    public AddRemovePanel(CarModel carModel, DrawPanel drawPanel){
         this.drawPanel = drawPanel;
         this.carModel = carModel;
         initComponents();
@@ -21,18 +21,23 @@ public class AddRemoveController {
     }
 
     private void initComponents() {
+        // Panel init
         addRemovePanel = new JPanel();
         addRemovePanel.setPreferredSize(new Dimension(40,140));
+
+        // Button init
         JButton addSaabButton = new JButton("Add Saab");
         JButton addVolvoButton = new JButton("Add Volvo");
         JButton addScaniaButton = new JButton("Add Scania");
         JButton removeButton = new JButton("Remove vehicle");
+
+        // Action listeners
         removeButton.addActionListener(e -> removeCar());
         addSaabButton.addActionListener(e -> addCar(VehicleFactory.addVehicle(VehicleType.SAAB95)));
         addScaniaButton.addActionListener(e -> addCar(VehicleFactory.addVehicle(VehicleType.SCANIA)));
         addVolvoButton.addActionListener(e -> addCar(VehicleFactory.addVehicle(VehicleType.VOLVO240)));
 
-
+        // Panel setup
         addRemovePanel.setLayout(new GridLayout(2,2));
         addRemovePanel.add(addSaabButton);
         addRemovePanel.add(addVolvoButton);
