@@ -1,5 +1,7 @@
+package Control;
 
-import model.ViewListnener;
+import model.*;
+
 import java.util.function.Consumer;
 import javax.swing.*;
 import java.util.List;
@@ -15,7 +17,7 @@ import java.util.ArrayList;
  **/
 
 public class ControlPanel extends JPanel{
-    private final List<ViewListnener> listeners = new ArrayList<>();
+    private final List<ViewListener> listeners = new ArrayList<>();
     private int gasAmount = 0;
     private JButton gasButton;
     private JButton brakeButton;
@@ -75,83 +77,27 @@ public class ControlPanel extends JPanel{
         this.add(buttonPanel);
     }
 
-//    private void addActionListeners() {
-//        gasButton.addActionListener(e -> {
-//            int gasAmount = (int) gasSpinner.getValue();
-//            carModel.gas(gasAmount);
-//            carModel.notifyObservers();
-//        });
-//
-//        brakeButton.addActionListener(e -> {
-//            int brakeAmount = (int) gasSpinner.getValue();
-//            carModel.brake(brakeAmount);
-//            carModel.notifyObservers();
-//        });
-//
-//        startButton.addActionListener(e -> {
-//            carModel.startEngine();
-//            carModel.notifyObservers();
-//        });
-//
-//        stopButton.addActionListener(e -> {
-//            carModel.stopEngine();
-//            carModel.notifyObservers();
-//        });
-//
-//        turboOnButton.addActionListener(e -> {
-//            carModel.turboOn();
-//            carModel.notifyObservers();
-//        });
-//
-//        turboOffButton.addActionListener(e -> {
-//            carModel.turboOff();
-//            carModel.notifyObservers();
-//        });
-//
-//        liftBedButton.addActionListener(e -> {
-//            carModel.liftBed();
-//            carModel.notifyObservers();
-//        });
-//
-//        lowerBedButton.addActionListener(e -> {
-//            carModel.lowerBed();
-//            carModel.notifyObservers();
-//        });
-//
-//    }
-
-//    private void addActionListeners(){
-//        gasButton.addActionListener(e -> carModel.gas((int) gasSpinner.getValue()));
-//        brakeButton.addActionListener(e -> carModel.brake((int) gasSpinner.getValue()));
-//        startButton.addActionListener(e -> carModel.startEngine());
-//        stopButton.addActionListener(e -> carModel.stopEngine());
-//        turboOnButton.addActionListener(e -> carModel.turboOn());
-//        turboOffButton.addActionListener(e -> carModel.turboOff());
-//        liftBedButton.addActionListener(e -> carModel.liftBed());
-//        lowerBedButton.addActionListener(e -> carModel.lowerBed());
-//    }
-
     private void addActionListeners() {
         gasSpinner.addChangeListener(e -> gasAmount = (int) ((JSpinner) e.getSource()).getValue());
-        turboOnButton.addActionListener(e -> engageListeners(ViewListnener::turboOnPerformed));
-        turboOffButton.addActionListener(e -> engageListeners(ViewListnener::turboOffPerformed));
-        liftBedButton.addActionListener(e -> engageListeners(ViewListnener::liftBedPerformed));
-        lowerBedButton.addActionListener(e -> engageListeners(ViewListnener::lowerBedPerformed));
-        startButton.addActionListener(e -> engageListeners(ViewListnener::startPerformed));
-        stopButton.addActionListener(e -> engageListeners(ViewListnener::stopPerformed));
+        turboOnButton.addActionListener(e -> engageListeners(ViewListener::turboOnPerformed));
+        turboOffButton.addActionListener(e -> engageListeners(ViewListener::turboOffPerformed));
+        liftBedButton.addActionListener(e -> engageListeners(ViewListener::liftBedPerformed));
+        lowerBedButton.addActionListener(e -> engageListeners(ViewListener::lowerBedPerformed));
+        startButton.addActionListener(e -> engageListeners(ViewListener::startPerformed));
+        stopButton.addActionListener(e -> engageListeners(ViewListener::stopPerformed));
         gasButton.addActionListener(e -> listeners.forEach(l -> l.gasPerformed(gasAmount)));
         brakeButton.addActionListener(e -> listeners.forEach(l -> l.brakePerformed(gasAmount)));
     }
 
-    private void engageListeners(Consumer<ViewListnener> consumer) {
+    private void engageListeners(Consumer<ViewListener> consumer) {
         listeners.forEach(consumer);
     }
 
-    public void addListener(ViewListnener listener) {
+    public void addListener(ViewListener listener) {
         listeners.add(listener);
     }
 
-    public void removeListener(ViewListnener listener) {
+    public void removeListener(ViewListener listener) {
         listeners.remove(listener);
     }
 

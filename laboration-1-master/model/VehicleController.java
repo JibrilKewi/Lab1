@@ -1,6 +1,6 @@
 package model;
 
-public class VehicleController implements ViewListnener{
+public class VehicleController implements ViewListener {
     private final CarModel model;
 
     public VehicleController(CarModel model){

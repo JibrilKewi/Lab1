@@ -1,6 +1,6 @@
 package model;
 
-public interface ViewListnener {
+public interface ViewListener {
 
     void gasPerformed(int gasAmount);
 

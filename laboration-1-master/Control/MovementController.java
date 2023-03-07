@@ -1,5 +1,8 @@
-import model.CarModel;
-import model.Vehicle;
+package Control;
+
+import View.*;
+import model.*;
+
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;

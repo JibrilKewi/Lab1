@@ -1,7 +1,8 @@
-import model.CarModel;
-import model.MotorizedVehicle;
-import model.VehicleFactory;
-import model.VehicleType;
+package Control;
+
+import View.*;
+import model.*;
+
 import javax.swing.*;
 import java.awt.*;
 

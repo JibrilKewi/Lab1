@@ -1,5 +1,7 @@
-import model.CarModel;
-import model.VehicleController;
+import Control.*;
+import View.*;
+import model.*;
+
 
 import javax.swing.*;
 public class Application {

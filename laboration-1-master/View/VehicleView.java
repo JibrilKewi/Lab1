@@ -1,5 +1,7 @@
-import model.CarModel;
-import model.ViewListnener;
+package View;
+
+import Control.*;
+import model.*;
 
 import javax.swing.*;
 import java.awt.*;
@@ -30,7 +32,7 @@ public class VehicleView extends JPanel {
         this.add(addRemovePanel.getAddRemovePanel(), BorderLayout.PAGE_START);
     }
 
-    public void addControlListener(ViewListnener listener) {
+    public void addControlListener(ViewListener listener) {
         controlPanel.addListener(listener);
     }
 

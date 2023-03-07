@@ -1,10 +1,12 @@
-import model.MotorizedVehicle;
-import model.Saab95;
-import model.Scania;
+package View;
+
+import model.*;
+import Control.*;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Objects;
 import javax.imageio.ImageIO;
@@ -20,6 +22,7 @@ public class DrawPanel extends JPanel{
     private final ArrayList<BufferedImage> images = new ArrayList<>();
     private final ArrayList<Point> positions = new ArrayList<>();
 
+
     public DrawPanel(int x, int y) {
         setDoubleBuffered(true);
         setPreferredSize(new Dimension(x, y));
@@ -32,11 +35,11 @@ public class DrawPanel extends JPanel{
             positions.add(new Point());
             try {
                 if (car instanceof Scania) {
-                    images.add(ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("model/pics/Scania.jpg"))));
+                    images.add(ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("pics/Scania.jpg"))));
                 } else if (car instanceof Saab95) {
-                    images.add(ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("model/pics/Saab95.jpg"))));
+                    images.add(ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("pics/Saab95.jpg"))));
                 } else {
-                    images.add(ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("model/pics/Volvo240.jpg"))));
+                    images.add(ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("pics/Volvo240.jpg"))));
                 }
             } catch (IOException ex) {
                 ex.printStackTrace();

@@ -13,8 +13,10 @@ import java.util.LinkedList;
 
 public class Workshop <T extends Vehicle>{
 
-    private int capacity;
+    private final int capacity;
     private final Deque<T> vehicleLoad = new LinkedList<>();
+
+    private CarLoad load;
 
     public Workshop(int capacity){
         this.capacity = capacity;
