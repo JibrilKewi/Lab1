@@ -1,6 +1,7 @@
 package model;
 
 import java.awt.*;
+import java.util.List;
 
 /**
  * model.Saab95 is used to create and initialize a Saab object.

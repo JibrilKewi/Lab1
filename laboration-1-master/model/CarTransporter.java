@@ -5,6 +5,7 @@ import model.TrailerMethods;
 import model.TrailerTruck;
 
 import java.awt.*;
+import java.util.List;
 
 
 /**
@@ -154,6 +155,5 @@ public class CarTransporter extends TrailerTruck implements TrailerMethods, CarL
     private boolean isCloseEnough(Car car){
         return getyPos() - car.getyPos() < MIN_LOAD_DIST && getxPos() - car.getxPos() < MIN_LOAD_DIST;
     }
-
 
 }

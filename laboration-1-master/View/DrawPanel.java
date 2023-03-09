@@ -8,19 +8,21 @@ import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 import javax.imageio.ImageIO;
 import javax.swing.*;
 
 // This panel represent the animated part of the view with the car images.
 
-public class DrawPanel extends JPanel{
+public class DrawPanel extends JPanel {
 
 
     // TODO: Make this general for all cars
-    private final ArrayList<MotorizedVehicle> cars = new ArrayList<>();
+    private List<MotorizedVehicle> cars = new ArrayList<>();
     private final ArrayList<BufferedImage> images = new ArrayList<>();
     private final ArrayList<Point> positions = new ArrayList<>();
+
 
 
     public DrawPanel(int x, int y) {
@@ -30,7 +32,7 @@ public class DrawPanel extends JPanel{
     }
 
     public void addCar(MotorizedVehicle car) {
-        if(cars.size() < 10) {
+        if (cars.size() < 10) {
             cars.add(car);
             positions.add(new Point());
             try {
@@ -47,11 +49,11 @@ public class DrawPanel extends JPanel{
         }
     }
 
-    public void removeCar(){
-        if(cars.size() > 0){
-            images.remove(cars.size()-1);
-            positions.remove(cars.size()-1);
-            cars.remove(cars.size()-1);
+    public void removeCar() {
+        if (cars.size() > 0) {
+            images.remove(cars.size() - 1);
+            positions.remove(cars.size() - 1);
+            cars.remove(cars.size() - 1);
         }
     }
 
@@ -62,23 +64,29 @@ public class DrawPanel extends JPanel{
         super.paintComponent(g);
 
         // Some fun map Graphics
-        Graphics2D g2 = (Graphics2D)g;
+        Graphics2D g2 = (Graphics2D) g;
         g2.setColor(Color.orange);
-        for(int i = 0; i < 4; i++){
-        g2.fillRect(60 + i * 200, 280, 80, 20);
+        for (int i = 0; i < 4; i++) {
+            g2.fillRect(60 + i * 200, 280, 80, 20);
         }
 
         // Drawing the vehicles
-        for(int i = 0; i < images.size(); i++){
+        for (int i = 0; i < images.size(); i++) {
             Point p = positions.get(i);
-            g.drawImage(images.get(i), p.x, p.y , null);
+            g.drawImage(images.get(i), p.x, p.y, null);
         }
     }
 
 
-    public void updateCarPosition(int x, int y, int index) {
-        positions.set(index, new Point(x, y));
+    void actOnChange(List<MotorizedVehicle> cars) {
+        System.out.println("called actonchange");
         repaint();
+        for (Vehicle v : cars) {
+            System.out.println("called actonchange list");
+            int x = (int) Math.round(v.getxPos());
+            int y = (int) Math.round(v.getyPos());
+            int index = cars.indexOf(v);
+            positions.set(index, new Point(x, y));
+        }
     }
-
 }

@@ -8,12 +8,12 @@ import java.awt.*;
 
 public class AddRemovePanel {
     private final DrawPanel drawPanel;
-    private final CarModel carModel;
+    private final World v;
     private JPanel addRemovePanel;
 
-    public AddRemovePanel(CarModel carModel, DrawPanel drawPanel){
+    public AddRemovePanel(World v, DrawPanel drawPanel){
         this.drawPanel = drawPanel;
-        this.carModel = carModel;
+        this.v = v;
         initComponents();
     }
 
@@ -48,11 +48,11 @@ public class AddRemovePanel {
 
     public void addCar(MotorizedVehicle car) {
         drawPanel.addCar(car);
-        carModel.addCar(car);
+        v.addCar(car);
     }
 
     public void removeCar(){
         drawPanel.removeCar();
-        carModel.removeCar();
+        v.removeCar();
     }
 }

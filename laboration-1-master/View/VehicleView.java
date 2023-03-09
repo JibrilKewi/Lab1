@@ -5,19 +5,20 @@ import model.*;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.List;
 
-public class VehicleView extends JPanel {
+public class VehicleView extends JPanel implements WorldListener {
     private static final int X = 800;
     private static final int Y = 800;
 
     private ControlPanel controlPanel;
 
     private DrawPanel drawPanel;
-    private final CarModel carModel;
+    private World v;
 
     // Constructor
-    public VehicleView(CarModel carModel) {
-        this.carModel = carModel;
+    public VehicleView(World v) {
+        this.v = v;
         initComponents();
     }
 
@@ -25,7 +26,7 @@ public class VehicleView extends JPanel {
     private void initComponents() {
         drawPanel = new DrawPanel(X, Y - 240);
         this.controlPanel = new ControlPanel(X, Y);
-        AddRemovePanel addRemovePanel = new AddRemovePanel(carModel, drawPanel);
+        AddRemovePanel addRemovePanel = new AddRemovePanel(v, drawPanel);
         this.setLayout(new BorderLayout());
         this.add(drawPanel, BorderLayout.CENTER);
         this.add(controlPanel, BorderLayout.PAGE_END);
@@ -36,7 +37,10 @@ public class VehicleView extends JPanel {
         controlPanel.addListener(listener);
     }
 
-    public void updateCarPosition(int x, int y, int index) {
-        drawPanel.updateCarPosition(x, y, index);
+
+    @Override
+    public void actOnChange(List<MotorizedVehicle> vehicles) {
+        System.out.println("drawpanel actonchange is being called");
+        drawPanel.actOnChange(vehicles);
     }
 }

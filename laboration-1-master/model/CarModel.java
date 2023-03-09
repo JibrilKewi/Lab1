@@ -4,14 +4,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class CarModel{
-
-
-    ArrayList<MotorizedVehicle> vehicles = new ArrayList<>();
+public class CarModel {
+    List<MotorizedVehicle> vehicles = new ArrayList<>();
 
     public void addCar(MotorizedVehicle car) {
         if(vehicles.size() < 10) {
             vehicles.add(car);
+
+            System.out.println("car added");
+//            model.addListener((VehicleModelListeners) car);
         }
     }
 
@@ -27,6 +28,7 @@ public class CarModel{
             if (vehicle.getxPos() > 700 || vehicle.getxPos() < 0 || vehicle.getyPos() > 700 || vehicle.getyPos() < 0){
                 vehicle.turnLeft();
                 vehicle.turnLeft();
+                System.out.println("collided");
                 vehicle.move();
             } else {
                 vehicle.move();
@@ -86,7 +88,7 @@ public class CarModel{
         }
     }
 
-    public ArrayList<MotorizedVehicle> getVehicles(){
+    public List<MotorizedVehicle> getVehicles(){
         return vehicles;
     }
 

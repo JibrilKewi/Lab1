@@ -1,49 +1,51 @@
-package model;
+package Control;
+
+import model.World;
 
 public class VehicleController implements ViewListener {
-    private final CarModel model;
+    private final World model;
 
-    public VehicleController(CarModel model){
+    public VehicleController(World model){
         this.model = model;
     }
 
     @Override
     public void gasPerformed(int gasAmount) {
-        model.gas(gasAmount);
+        model.gasVehicles(gasAmount);
     }
 
     @Override
     public void brakePerformed(int brakeAmount) {
-        model.brake(brakeAmount);
+        model.brakeVehicles(brakeAmount);
     }
 
     @Override
     public void turboOnPerformed() {
-        model.turboOn();
+        model.turnOnTurbos();
     }
 
     @Override
     public void turboOffPerformed() {
-        model.turboOff();
+        model.turnOffTurbos();
     }
 
     @Override
     public void startPerformed() {
-        model.startEngine();
+        model.startVehicles();
     }
 
     @Override
     public void stopPerformed() {
-        model.stopEngine();
+        model.stopVehicles();
     }
 
     @Override
     public void liftBedPerformed() {
-        model.liftBed();
+        model.liftBeds();
     }
 
     @Override
     public void lowerBedPerformed() {
-        model.lowerBed();
+        model.lowerBeds();
     }
 }

@@ -1,6 +1,7 @@
 package model;
 
 import java.awt.*;
+import java.util.List;
 
 /**
  * model.Volvo240 is used to create and initialize a Volvo object.

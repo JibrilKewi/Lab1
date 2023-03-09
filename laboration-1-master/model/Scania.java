@@ -4,6 +4,7 @@ import model.TrailerMethods;
 import model.TrailerTruck;
 
 import java.awt.*;
+import java.util.List;
 
 /**
  * model.Scania is used to create and initialize a model.Scania object.
@@ -11,7 +12,7 @@ import java.awt.*;
  * A model.Scania object is initialized with position along the x- and y- coordinates.
  * The other characteristics are set by default.
  */
-public class Scania extends TrailerTruck implements TrailerMethods {
+public class Scania extends TrailerTruck implements TrailerMethods  {
 
     public Scania(double xPos, double yPos, Direction dir){
         super(2, 100, Color.black, "model.Scania", xPos, yPos, dir, 0);
@@ -66,4 +67,5 @@ public class Scania extends TrailerTruck implements TrailerMethods {
     public void lowerTrailer(double amount){
         trailer.lower(amount);
     }
+
 }
