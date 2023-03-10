@@ -10,9 +10,6 @@ public class CarModel {
     public void addCar(MotorizedVehicle car) {
         if(vehicles.size() < 10) {
             vehicles.add(car);
-
-            System.out.println("car added");
-//            model.addListener((VehicleModelListeners) car);
         }
     }
 
@@ -28,7 +25,6 @@ public class CarModel {
             if (vehicle.getxPos() > 700 || vehicle.getxPos() < 0 || vehicle.getyPos() > 700 || vehicle.getyPos() < 0){
                 vehicle.turnLeft();
                 vehicle.turnLeft();
-                System.out.println("collided");
                 vehicle.move();
             } else {
                 vehicle.move();
@@ -38,7 +34,6 @@ public class CarModel {
     // Calls the gas method for each car once
     public void gas(int amount) {
         double gas = ((double) amount) / 100;
-        System.out.println("Gas: " + gas);
         vehicles.forEach(v -> v.gas(gas));
     }
 

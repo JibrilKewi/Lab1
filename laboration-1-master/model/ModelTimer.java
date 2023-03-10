@@ -6,8 +6,8 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 public class ModelTimer implements ActionListener {
-    private World nvm;
-    private Timer timer;
+    private final World nvm;
+    private final Timer timer;
 
     public ModelTimer(World nvm) {
         this.timer = new Timer();
@@ -20,9 +20,8 @@ public class ModelTimer implements ActionListener {
             public void run() {
                 actionPerformed(null);
             }
-        }, 0, 10);
+        }, 10, 5);
     }
-
 
     @Override
     public void actionPerformed(ActionEvent e) {

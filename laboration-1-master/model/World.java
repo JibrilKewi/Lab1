@@ -5,7 +5,7 @@ import java.util.List;
 
 public class World implements VehicleModel {
     private final List<WorldListener> listeners = new ArrayList<>();
-    private CarModel c = new CarModel();
+    private final CarModel c = new CarModel();
 
     @Override
     public void moveVehicles() {
@@ -68,13 +68,9 @@ public class World implements VehicleModel {
     }
 
     public void addListener(WorldListener listener){
-        System.out.println("listner added");
         listeners.add(listener);
     }
 
-    public void removeListener(WorldListener listener){
-        listeners.remove(listener);
-    }
 
     private void notifyListeners(){
         listeners.forEach(l -> l.actOnChange(c.getVehicles()));

@@ -79,10 +79,8 @@ public class DrawPanel extends JPanel {
 
 
     void actOnChange(List<MotorizedVehicle> cars) {
-        System.out.println("called actonchange");
         repaint();
         for (Vehicle v : cars) {
-            System.out.println("called actonchange list");
             int x = (int) Math.round(v.getxPos());
             int y = (int) Math.round(v.getyPos());
             int index = cars.indexOf(v);

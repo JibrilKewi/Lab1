@@ -40,7 +40,6 @@ public class VehicleView extends JPanel implements WorldListener {
 
     @Override
     public void actOnChange(List<MotorizedVehicle> vehicles) {
-        System.out.println("drawpanel actonchange is being called");
         drawPanel.actOnChange(vehicles);
     }
 }
